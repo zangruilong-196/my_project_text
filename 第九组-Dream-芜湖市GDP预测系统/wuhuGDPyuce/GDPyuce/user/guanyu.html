@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>预测结果</title>
+		<style>
+		body{background: linear-gradient(to bottom right,black,#d6d6d6);}   <!--渐变,由左上到右下，黑色渐变到#d6d6d6（白色）-->
+		#example2{
+		    width: 1305px;
+		    max-height: 900px;
+		    margin: 0 auto;
+		    background: black;
+		    overflow: auto;
+			}
+		#Header1{
+		    height:100px;
+		    background: linear-gradient(to bottom right,black,#d6d6d6);
+			}
+		#Header2{
+		    height:100px;
+		    width: 1190px;
+		    float: left;
+			}
+		#Header3{
+		    font-size: 55px;
+		    font-style: italic;
+		    line-height: 40px;
+		    color: #ffffff;
+			h1{text-align:center;}
+			}
+		#Content{
+		    height:670px;
+		    margin-top:20px;
+		    background: linear-gradient(to bottom right,white,black);
+			}
+		ul {
+		    list-style-type: none;     <!--list-style-type 属性设置列表项标记的类型。-->
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;     <!--超出部分隐藏//scroll：超出部分滚动-->>
+		    background-color: #303030;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover {
+		    background-color: #2e300c;
+		}
+		li a.active {
+		    background-color: #4CAF50;
+		    color: white;
+		}
+		h2 {text-align:center;}
+
+		</style>
+	</head>
+	<body>
+		<div id="Header1">
+		        <div id="Header2">
+		            <h1 id="Header3">欢迎使用芜湖市GDP预测系统</h1>
+		        </div>
+		    </div>
+			<ul>
+				<li><a href="{% url 'shuoye' %}" target="_self">主页</a></li>
+				<!--:active向活动的链接添加特殊的样式。当你点击一个链接时它变成活动链接。-->
+				<li><a href="{% url 'shuju' %}" target="_self">数据</a></li>
+				<li><a href="{% url 'yuce' %}" target="_self">预测</a></li>
+				<li><a class="active" href="{% url 'guanyu' %}" target="_self">关于</a></li>
+			</ul>
+		    <div id="Content">
+				<h2>本系统由第九组Dream制作</h2>
+				<p>在这次小学期中，收获颇多，虽然小组只有2个人，但依然不影响我们决定制作好一个项目的决心。</p>
+				<p>虽然这次小学期只有短短的2星期多，但我们在其中获益良多，体会到了什么叫快乐与痛苦兼并。</p>
+				<p>一方面，因为天天熬夜，代码报错，框架的搭建与设计而苦恼</p>
+				<p>另一方面，又因为自己的不断努力制作出的成果而感到高兴</p>
+				<p>当项目接近尾声终于完成时，整个人都放松了，满满的成就感</p>
+				<p>在进行项目时，我们组先明确了分工并确定了目标</p>
+				<p>我们都在基础知识不足的情况下，卯足干劲，先是花费数天学习研究了HTML，然后分工进行自己的任务</p>
+				<p>对我们而言，最痛苦的无非就是学了后面忘了前面的内容，复习前面的内容，后面的内容又忘了</p>
+				<p>唯一的想法就是，。。。我这脑子怎么就是记不住呢</p>
+				<p>最后便选择了边做边看，不会就看，不会就查，看完查完接着做。</p>
+				<p>在一次又一次的尝试中</p>
+				<p>在代码一行又一行的红色中</p>
+				<p>在一个个日日夜夜中</p>
+				<p>我们终于给这个小学期画上了完整的句号</p>
+				<p>可能，最大的收获还是那十几天的坚持，努力，付出，与不悔</p>
+				<p>最后，也要感谢老师对我们的关心，教导与陪伴</p>
+				<h3>制作者：陈沁霄 张瑞龙</h3>
+
+
+			</div>
+	</body>
+</html>

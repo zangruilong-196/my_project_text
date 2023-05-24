@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.secondhandtransaction">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logoimg"
+        android:label="校园二手交易平台"
+        android:roundIcon="@drawable/logoimg"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Test2Activity"></activity>
+        <activity android:name=".MyCollectionActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".UserMsgActivity" />
+        <activity android:name=".UpdateUserMsgActivity" />
+        <activity android:name=".CommodityTypeActivity" />
+        <activity android:name=".DetailInfoActivity" />
+        <activity android:name=".LoginEmailActivity" />
+        <activity android:name=".UpdatePwdActivity" />
+        <activity android:name=".MyPublishActivity" /> <!-- android:theme="@style/Theme.SecondHandTransaction"> -->
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"> -->
+        <activity android:name=".TestActivity" />
+        <activity android:name=".ReleaseActivity" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".IndexActivity" />
+        <activity android:name=".ForgetActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".HelloActivity">
+
+            <!-- <activity android:name=".PublishActivity"/> -->
+            <!-- <activity android:name=".MainActivity" /> -->
+            <!-- <activity android:name=".DetailActivity" /> -->
+
+
+            <!-- <activity android:name=".AdminActivity" /> -->
+            <!-- <activity android:name=".LoginActivity" /> -->
+            <!-- <activity android:name=".IndexActivity" /> -->
+            <!-- <activity android:name=".ForgetActivity" /> -->
+            <!-- <activity android:name=".RegisterActivity" /> -->
+            <!-- <activity android:name=".MyActivity" /> -->
+            <!-- <activity android:name=".HelloActivity"> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

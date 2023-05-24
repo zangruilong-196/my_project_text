@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>创建用户</title>
+		<style>
+		h3 {text-align:center;}
+		div {
+				border:2px solid #a1a1a1;
+				padding:50px 40px;
+				background:#dddddd;
+				width:100px;
+				border-radius:100px;
+			}
+		</style>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+		</script>
+		<script>
+		$(document).ready(function(){
+		  $(":submit").css("background-color","red");
+		});
+		</script>
+	</head>
+	<body>
+		<h3>用户注册</h3>
+		<form action="{% url 'zhucedo' %}" method="post">
+			<div style="padding: 50px 875px 100px;">
+			  <form action="/action_page.php">
+				  <label for="firstname">账户名</label>
+				  <input type="text" id="firstname" name="name" placeholder="请输入你的账户名"><br/>
+				  <label for="lastname">密码</label>
+				  <input type="text" id="lastname" name="password" placeholder="请输入密码"><br/>
+
+				<input type="submit" value="提交"><br>
+			  </form>
+			</div>
+			<!--	账号：<input type="text" name="txtName" placeholder="请输入您的账号 "/><br/>
+				密码：<input type="password" name="txtPwd" placeholder="请输入您的密码"/><br/>
+				确认密码：<input type="password" name="txtPwd" placeholder="请再次输入密码"/>
+				<input type="submit" value="注册" style="width: 150px; height: 45px;"/>
+				-->
+		</form>
+
+	</body>
+</html>

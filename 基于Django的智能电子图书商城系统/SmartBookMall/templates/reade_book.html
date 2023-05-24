@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阅读</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+<center>
+
+    <div class="reade_book_box">
+             <p class="bookname">
+                 《
+                 {% for b in book_name %}
+                 {{b}}
+                 {% endfor %}
+                 》
+             </p>
+
+             <textarea id="book_neirong" class="book_neirong" >
+                 {% for item in attack_method %}
+                 {{item}}
+                 {% endfor %}
+             </textarea>
+    </div>
+
+</center>
+<script src="/static/js/textarea-book-neirong.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/reade_book.css">
+</body>
+</html>

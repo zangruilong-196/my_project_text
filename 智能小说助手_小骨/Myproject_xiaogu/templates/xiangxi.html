@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<style>
+ body {
+   background:url("/static/飞仙.jpg")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+</head>
+<body>
+
+<a href="{% url 'shucheng' %}"><button>返回</button></a>
+
+
+
+
+
+
+<center>
+
+
+                    {%for i in wangbooks%}
+
+                        <h3>{{i.bookname}}</h3><br>
+                        <img src="/media/{{i.img}}" alt="" width="100" /><br>
+                        <h4>作者：{{i.authors}}</h4><br>
+                        <h4>价格：{{i.price}}</h4>
+                    {%endfor%}
+
+</center>
+
+
+
+<br>
+<br>
+
+
+<center>
+
+
+                    {%for b in bookdetails%}
+
+                        <h4>内容简介：</h4>
+                        <textarea cols="70" rows="20">{{b.details}}</textarea>
+                        <h4>点赞数：</h4>
+                        <p>{{b.number}}</p>
+
+                    {%endfor%}
+
+
+
+
+</center>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/xiugai_tiezi.css">
+    <title>修改帖子</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+
+<center>
+    <div style="width:800px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+        <div style="width:500px;height:30px;margin-top:30px;"></div>
+        <div style="width:500px;height:110px;margin-top:30px;">
+            <div class="tou_xiang-box">
+                <img src="/media/{{touxiang}}" class="tx_img">
+            </div>
+        </div>
+        <div style="width:500px;height:30px;margin-top:30px;">
+            <p style="margin:0 auto;font-size:25px;">{{ request.session.name }}</p>
+        </div>
+
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="on" onsubmit="return toVaild()">
+            {% csrf_token %}
+            <center>
+                <div style="width:500px;height:510px;margin-top:30px;">
+                    <textarea name="tiezi" class="tiezi"  id="tiezi" placeholder="写点什么吧">{{tiezi_text}}</textarea>
+                </div>
+                <input type="text" style="display:none;" id="tiezi-id" name="tiezi-id" value="{{id}}"><br>
+            </center>
+            <div style="width:300px;height:110px;margin-top:30px;float:right">
+                <button class="button" type="submit">修改</button>
+            </div>
+        </form>
+        <div style="width:300px;height:110px;margin-top:30px;float:left">
+            <a href="/bookmall/shouye/">
+                <button class="button2">取消</button>
+            </a>
+        </div>
+    </div>
+</center>
+
+	{% if messages %}
+	<script>
+	{% for msg in messages %}
+	alert('{{ msg.message }}');
+	{% endfor %}
+	</script>
+	{% endif %}
+
+</body>
+</html>

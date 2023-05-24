@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<style>
+ body {
+   background:url("/static/飞仙.jpg")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小说</title>
+</head>
+<body>
+<center>
+
+<textarea cols="100" rows="50" >
+
+  {% for item in attack_method %}
+  {{item}}
+  {% endfor %}
+  </textarea>
+</center>
+
+
+
+</body>
+</html>

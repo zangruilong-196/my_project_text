@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充值</title>
+</head>
+<body>
+<center>
+    <div class="cz_box">
+        <p class="czje">充值金额</p>
+        <form action="{% url 'chongzhi' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" style="display:none;" name="user_id" value="{{request.session.id}}">
+            <input name="money" class="input-num" type="number" min="0" value="0">
+            <button type="submit" class="bt">确定</button>
+        </form>
+    </div>
+</center>
+
+
+
+
+
+{% if messages %}
+<script>
+{% for msg in messages %}
+alert('{{ msg.message }}');
+{% endfor %}
+</script>
+{% endif %}
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/chongzhi.css">
+</body>
+</html>

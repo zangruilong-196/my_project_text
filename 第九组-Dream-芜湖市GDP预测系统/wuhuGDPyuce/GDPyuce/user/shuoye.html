@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>首页</title>
+		<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+		<style>
+		body{background: linear-gradient(to bottom right,black,#d6d6d6);}   <!--渐变,由左上到右下，黑色渐变到#d6d6d6（白色）-->
+		#example2{
+            width: 1305px;
+            max-height: 900px;
+            margin: 0 auto;
+            background: black;
+            overflow: auto;
+			}
+        #Header1{
+            height:100px;
+            background: linear-gradient(to bottom right,black,#d6d6d6);
+			}
+        #Header2{
+            height:100px;
+            width: 1190px;
+            float: left;
+			}
+        #Header3{
+            font-size: 55px;
+            font-style: italic;
+            line-height: 40px;
+            color: #ffffff;
+			h1{text-align:center;}
+			}
+        #Content{
+            height:600px;
+            margin-top:20px;
+            background: linear-gradient(to bottom right,white,black);
+			}
+		ul {
+		    list-style-type: none;     <!--list-style-type 属性设置列表项标记的类型。-->
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;     <!--超出部分隐藏//scroll：超出部分滚动-->>
+		    background-color: #303030;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover {
+		    background-color: #2e300c;
+		}
+		li a.active {
+		    background-color: #4CAF50;
+		    color: white;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="example2">
+		    <div id="Header1">
+		        <div id="Header2">
+		            <h1 id="Header3">欢迎使用芜湖市GDP预测系统</h1>
+		        </div>
+		    </div>
+			<ul>
+				<li><a class="active" href="{% url 'shuoye' %}" target="_self">主页</a></li>
+				<!--:active向活动的链接添加特殊的样式。当你点击一个链接时它变成活动链接。-->
+				<li><a href="{% url 'shuju' %}" target="_self">数据</a></li>
+				<li><a href="{% url 'yuce' %}" target="_self">预测</a></li>
+				<li><a href="{% url 'guanyu' %}" target="_self">关于</a></li>
+			</ul>
+		    <div id="Content">
+				<div id="main" style="width: 1200px;height:600px;"></div>
+
+				<script type="text/javascript" style="magin-left:200px">
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main'));
+				// 指定图表的配置项和数据
+				var option = {
+					legend: {
+						orient: 'vertical',      // 布局方式，默认为水平布局，可选为：
+						                                   // 'horizontal' | 'vertical'
+						        x: 'right',               // 水平安放位置，默认为全图居中，可选为：
+						                                   // 'center' | 'left' | 'right'
+						                                   // | {number}（x坐标，单位px）
+						        y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
+						                                   // 'top' | 'bottom' | 'center'
+						                                   // | {number}（y坐标，单位px）
+						        borderWidth: 0,            // 图例边框线宽，单位px，默认为0（无边框）
+						        padding: 5,                // 图例内边距，单位px，默认各方向内边距为5，
+						                                   // 接受数组分别设定上右下左边距，同css
+						        itemGap: 10,               // 各个item之间的间隔，单位px，默认为10，
+						                                   // 横向布局时为水平间隔，纵向布局时为纵向间隔
+
+					},
+					tooltip: {},
+					dataset: {
+						// 提供一份数据。
+						source: [
+							['product', '粮食', '人口', '化工' ,'薪资'],
+							['2010年', 43.3, 85.8, 93.7 ,100.5],
+							['2013年', 83.1, 73.4, 55.1 ,41.8],
+							['2016年', 86.4, 65.2, 82.5 ,66.7],
+							['2019年', 72.4, 53.9, 39.1 ,23.3]
+						]
+					},
+					// 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
+					xAxis: {type: 'category'},
+					// 声明一个 Y 轴，数值轴。
+					yAxis: {},
+					// 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
+					series: [
+						{type: 'bar'},
+						{type: 'bar'},
+						{type: 'bar'},
+						{type: 'bar'}
+					]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+				</script>
+			</div>
+			<h3>在这里，你可以查看芜湖市GDP的未来走向，也可以查看与GDP有关的相关数据</h3>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<style>
+ body {
+   background:url("/static/雪.gif")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人物热度前10排名</title>
+</head>
+<body>
+    <h1>
+        <p style="text-align:center">人物热度前10排名</p>
+    </h1>
+    <center>
+
+        <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p style="text-align:center">请输入想查看的书名：<input type="text" name="bookname" /></p>
+
+        <p style="text-align:center"> <input type="submit" value="确认" />
+
+          <p style="color: #ff0000;text-align: center">{{error_name}}</p>
+    </form>
+
+    </center>
+</body>
+</html>

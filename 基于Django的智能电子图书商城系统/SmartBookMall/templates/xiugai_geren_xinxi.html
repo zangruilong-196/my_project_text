@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改个人信息</title>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/static/css/xg_gr_xx.css">
+  </head>
+  <body>
+  <div class="addbook">
+      <br><br><br><br><br>
+      <center><p style="font-size:15px;color:#5d5d5daa;">修改个人信息</p></center>
+      <div class="addbook-box"><br>
+          <center>
+              <div style="width:350px;height:100px;margin-top:20px;">
+                  <div class="tou_xiang-box">
+                      <img src="/media/{{touxiang}}" class="tx_img">
+                  </div>
+                  <div style="width:200px;height:100px;float:left;">
+                      <p style="margin:0 auto;font-size:25px;">{{username}}</p>
+                  </div>
+              </div>
+          </center>
+
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="on">
+            {% csrf_token %}
+            <center>
+                <div style="width:350px;height:50px;margin-top:20px;">
+                    <p style="float:left">性别</p>
+
+                    {% if sex == '男' %}
+                    <p style="float:right">
+                        <input type="radio" name="sex" value="男" checked/>男
+                        <input type="radio" name="sex" value="女"/>女
+                    </p>
+                    {% elif sex == '女' %}
+                    <p style="float:right">
+                        <input type="radio" name="sex" value="男"/>男
+                        <input type="radio" name="sex" value="女" checked/>女
+                    </p>
+                    {% else %}
+                    <p style="float:right">
+                        <input type="radio" name="sex" value="男"/>男
+                        <input type="radio" name="sex" value="女"/>女
+                    </p>
+                    {% endif %}
+                </div>
+            </center>
+
+            <center>
+                <div style="width:350px;height:50px;margin-top:20px;">
+                    <p style="float:left">年龄</p>
+                    <p style="float:right">
+                        <input type="number" min="1" name="age" class="input-text" value="{{age}}"/>&nbsp;&nbsp;&nbsp;岁
+                    </p>
+
+                </div>
+            </center>
+
+              <center>
+                <div style="width:350px;height:50px;margin-top:20px;">
+                    <p style="float:left">生日</p>
+                    <p style="float:right">
+                        <input type="number" min="0" name="year" class="input-text" value="{{year}}"/>&nbsp;&nbsp;&nbsp;年
+                        <input type="number" min="1" max="12" name="month" class="input-text" value="{{month}}"/>&nbsp;&nbsp;&nbsp;月
+                        <input type="number" min="1" max="31" name="data" class="input-text" value="{{data}}"/>&nbsp;&nbsp;&nbsp;日
+                    </p>
+
+                </div>
+            </center>
+
+            <center>
+                <div style="width:350px;height:50px;margin-top:20px;">
+                    <p style="float:left">现居</p>
+                    <p style="float:right">
+                        <input type="text" name="xianju" class="input-text-2" value="{{xianju}}"/>
+                    </p>
+                </div>
+            </center>
+            <center>
+                <div style="width:350px;height:50px;margin-top:20px;">
+                    <p style="float:left">邮箱</p>
+                    <p style="float:right">
+                        <input type="text" name="email" class="input-text-3" value="{{email}}"/>
+                    </p>
+                </div>
+            </center>
+            <center>
+                <div class="upload-file">
+                    <input type="file" class="input-file" id="input-file1" name="touxiang_img" accept="image/*">
+                    <span class="tip" id="tip1">上传头像图片</span>
+                </div>
+            </center>
+            <br>
+
+            <center>
+
+                <textarea name="jianjie" class="jianjie"  id="jianjie" placeholder="一句话介绍自己">{{jianjie}}</textarea>
+
+            </center>
+
+
+
+            <input type="text" style="display:none;" name="uid" value="{{request.session.id}}"><br>
+            <div style="width:300px;height:50px;margin-top:20px;float:right;">
+                <button class="button" type="submit">修改</button>
+            </div>
+
+
+
+        </form>
+          <div style="width:300px;height:50px;margin-top:20px;float:left;">
+              <a href="/bookmall/shouye/">
+                  <button class="button2">取消</button>
+              </a>
+          </div>
+
+
+
+    </div>
+
+<br><br><br><br><br>
+</div>
+
+
+    <!-- Script -->
+    <script type="text/javascript">
+ // 设置只能最多选择三种类型
+    var checkedCount = 0;
+
+    function checkCount(obj) {
+        if (obj.checked === true) {
+            if (checkedCount >= 3) {
+                alert("最多只能选择3种类型哦 ૮₍♡>𖥦< ₎ა ");
+                return false;
+            }
+            checkedCount++;
+        } else {
+            checkedCount--;
+        }
+
+        return true
+
+    }
+
+    // form提交前验证，最少选择一种资讯类型
+    function toVaild() {
+        if (checkedCount === 0) {
+            alert("请选择至少一种类型哦");
+            return false;
+        }
+        return true;
+    }
+   </script>
+    <script type="text/javascript">
+    var fileInput1 = document.getElementById("input-file1");
+    var tip1 = document.getElementById("tip1");
+
+    fileInput1.addEventListener('change',function(e){ //监听change事件，选择文件后触发
+      if(this.files.length === 1){ //处理文件名
+        tip1.textContent = this.files[0].name;
+      }
+      else {
+        tip1.textContent = '已选择 ' + this.files.length + ' 个文件';
+      }
+    })
+</script>
+     <script type="text/javascript">
+    var fileInput2 = document.getElementById("input-file2");
+    var tip2 = document.getElementById("tip2");
+
+    fileInput2.addEventListener('change',function(e){ //监听change事件，选择文件后触发
+      if(this.files.length === 1){ //处理文件名
+        tip2.textContent = this.files[0].name;
+      }
+      else {
+        tip2.textContent = '已选择 ' + this.files.length + ' 个文件';
+      }
+    })
+</script>
+
+  <script src="/static/js/mantianfeihua.js"></script>
+
+
+  	{% if messages %}
+		<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+        </script>
+		{% endif %}
+
+  </body>
+</html>

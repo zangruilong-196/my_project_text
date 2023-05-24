@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailInfoActivity">
+
+    <TextView
+        android:id="@+id/xiangqing"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="商品详情"
+
+        android:textSize="22dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"/>
+    <View
+        android:layout_below="@id/xiangqing"
+        android:layout_width="match_parent"
+        android:layout_height="0.0001dp"
+        android:background="#C3C0C0"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_refresh"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="刷新"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="@color/colorPurple"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginStart="40dp"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/tv_back"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="返回"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="@color/colorPurple"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginStart="330dp"/>-->
+
+    <ImageView
+        android:id="@+id/iv_commodity"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ww"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/xiangqing"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_commodity"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题:"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="一个娃娃"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_title"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="描述:"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="这只娃娃非常的可爱!"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_description"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="价格:"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50元"
+            android:textColor="#DA1A0C"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_price"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系方式:"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="1111111111"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/ll_comment"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/ll_phone"
+        android:layout_marginTop="8dp">
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@id/btn_submit"
+            android:hint="  请输入留言内容~"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/bg_edittext"
+            />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:text="发送"
+            android:textSize="15sp"
+            android:background="#7EEDF8"
+            android:layout_marginRight="10dp" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_comment"
+        android:text="全部留言"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"/>
+    <ListView
+        android:id="@+id/list_comment"
+        android:layout_above="@id/info_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_comment"
+        android:padding="8dp"/>
+    <View
+        android:layout_below="@id/list_comment"
+        android:layout_width="match_parent"
+        android:layout_height="0.0001dp"
+        android:background="#C3C0C0"/>
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/info_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <ImageButton
+            android:id="@+id/ib_my_love"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/select"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_favorite_border_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ib_my_love"
+            android:layout_centerVertical="true"
+            android:textSize="17sp"
+            android:text="收藏"/>
+        <Button
+            android:id="@+id/buy"
+            android:layout_marginRight="20dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:text="立即购买"
+            android:textColor="@color/white"
+            android:background="#F44336"
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/buy"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="#F44336"
+            android:textColor="@color/white"
+            android:text="私信" />
+
+
+    </RelativeLayout>
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+
+        android:layout_height="55dp">
+        <Button
+            app:layout_constraintTop_toBottomOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="立即购买"
+            android:textColor="@color/white"
+            android:background="#F44336"
+            tools:ignore="MissingConstraints" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/sousuo.css">
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+<center>
+    <div style="width:1200px;height:1000px;background:rgba(255, 151, 151, 0.201);border-radius:50px;margin-top:30px;">
+        <p style="margin:0 auto;font-size:35px;font-family:kaiti;color:#5d5d5daa;">搜索结果</p>
+        <div style="width:1000px;height:30px;margin-top:30px;"></div>
+        <ul style="list-style-type: none">
+            {%for b in smartbookslist%}
+            <li class="items">
+                <a href="/bookmall/book_xiangxi/?ID={{b.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+                    <img src="/media/{{b.bookimg}}" class="book_img" height="180px">
+                    <p class="bookname">{{b.bookname}}</p>
+                    <p class="zuozhe">作者：{{b.author}}</p>
+                    <p class="price">{{b.price}}币</p>
+                </a>
+            </li>
+            {%endfor%}
+
+            {%for b in smartbookslist2%}
+            <li class="items">
+                <a href="/bookmall/book_xiangxi/?ID={{b.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+                    <img src="/media/{{b.bookimg}}" class="book_img" height="180px">
+                    <p class="bookname">{{b.bookname}}</p>
+                    <p class="zuozhe">作者：{{b.author}}</p>
+                    <p class="price">{{b.price}}币</p>
+                </a>
+            </li>
+            {%endfor%}
+        </ul>
+
+
+    </div>
+</center>
+
+</body>
+</html>

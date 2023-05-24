@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>21.jpg</filename>
+	<path>C:\Users\32703\Desktop\VOCdevkit\VOC2007\JPEGImages\21.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>828</width>
+		<height>1104</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>phone</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>153</xmin>
+			<ymin>204</ymin>
+			<xmax>733</xmax>
+			<ymax>1098</ymax>
+		</bndbox>
+	</object>
+</annotation>

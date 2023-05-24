@@ -1,0 +1,265 @@
+
+.xiangxi-box{
+width: 70%;
+background-size: cover;
+
+}
+
+
+.bookxinxibox{
+width:1200px;
+height:500px;
+
+background-color: white;
+float:left;
+border-radius:30px;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+
+
+.bookimgbox{
+width:250px;
+height:300px;
+background-color: white;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+
+}
+
+.bookimg{
+width:100%;
+height:100%;
+
+}
+
+
+.bookname-box{
+width:250px;
+background-color: white;
+float:left;
+margin-bottom:15px;
+margin-left:60px;
+margin-top:20px;
+
+}
+.zuozhe-box{
+width:250px;
+
+background-color: white;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:50px;
+
+}
+.fabu-box{
+width:200px;
+background-color: white;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:55px;
+
+}
+
+.booklab-box{
+width:800px;
+height:130px;
+float:left;
+background-color: white;
+margin-bottom:15px;
+margin-left:15px;
+}
+
+
+.act-box{
+width:800px;
+height:130px;
+float:left;
+background-color: white;
+margin-bottom:15px;
+margin-left:15px;
+
+}
+
+
+
+
+.jianjie-bookbox{
+width:800px;
+
+background-color: white;
+float:left;
+border-radius:30px;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+
+}
+
+.bookname{
+
+margin:0 auto;
+font-size:60px;
+font-family:楷体;
+margin-bottom:2px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.zuozhe{
+margin-bottom:10px;
+font-size:30px;
+font-family:楷体;
+color:  #0eb0f0;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.price{
+font-family:楷体;
+color: #ff6700;
+font-size:40px;
+
+}
+
+.fabu{
+margin-bottom:10px;
+font-size:25px;
+font-family:楷体;
+color:  rgba(255, 88, 230, 0.568);
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+.leibie{
+margin-bottom:10px;
+font-size:25px;
+font-family:楷体;
+color:  rgba(170, 56, 3, 0.897);
+
+float:left;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+.lab1{
+
+margin-bottom:10px;
+font-size:25px;
+font-family:楷体;
+color:  rgb(255, 23, 23);
+
+float:left;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+.lab2{
+
+margin-bottom:10px;
+font-size:25px;
+font-family:楷体;
+color:  rgb(255, 178, 23);
+
+float:left;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+.lab3{
+
+margin-bottom:10px;
+font-size:25px;
+font-family:楷体;
+color:  rgb(6, 164, 98);
+
+float:left;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.jianjie {
+border-radius:10px;
+
+width:600px;
+resize:none;
+font-size: 20px;
+font-family: "楷体";
+
+}
+
+.jj1{
+border-radius:10px;
+color:  rgba(255, 119, 119, 0.952);
+width:600px;
+resize:none;
+font-size: 30px;
+font-family: "楷体";
+
+}
+
+.pinglun-box{
+width:1200px;
+height:1200px;
+background-color: white;
+float:left;
+border-radius:30px;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+
+
+.comment_post{
+width: 80%;
+margin-left: 100px;
+}
+.comment_show{
+width: 80%;
+margin-left: 100px;
+}
+#commentform_title {
+background-image: url(//static.cnblogs.com/images/icon_addcomment.gif);
+background-repeat: no-repeat;
+padding: 0 0 0 25px;
+margin-bottom: 10px;
+}
+.feedback_area_title {
+border-bottom: 1px solid #ddd;
+font-size: 14px;
+font-weight: bold;
+margin: 20px 0 10px;
+}
+#p{
+border: deepskyblue 1px dashed;
+background-color: antiquewhite;
+}

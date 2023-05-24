@@ -1,0 +1,68 @@
+.tou_xiang-box{
+width:100px;
+height:100px;
+background:pink;
+border-radius:50px;
+}
+
+.tx_img{
+width:100px;
+height:100px;
+border-radius:50px;
+}
+
+.tiezi {
+width:500px;
+height:500px;
+resize:none;
+font-size: 20px;
+font-family: "楷体";
+}
+
+.button{
+width: 100px;/*设置按钮宽度*/
+height: 50px;/*设置按钮高度*/
+color:white;/*字体颜色*/
+
+float:left;
+margin-left:50px;
+
+
+
+background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+border-radius: 10px;/*让按钮变得圆滑一点*/
+border-width: 0;/*消去按钮丑的边框*/
+
+outline: none;/*取消轮廓*/
+font-family: KaiTi;/*字体设置为楷体*/
+font-size: 20px;/*设置字体大小*/
+text-align: center;/*字体居中*/
+cursor: pointer;/*设置鼠标箭头手势*/
+}
+.button:hover{/*鼠标移动时的颜色变化*/
+background-color: rgb(255, 8, 8);
+}
+
+.button2{
+width: 100px;/*设置按钮宽度*/
+height: 50px;/*设置按钮高度*/
+color:white;/*字体颜色*/
+
+float:right;
+margin-left:50px;
+
+
+
+background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+border-radius: 10px;/*让按钮变得圆滑一点*/
+border-width: 0;/*消去按钮丑的边框*/
+
+outline: none;/*取消轮廓*/
+font-family: KaiTi;/*字体设置为楷体*/
+font-size: 20px;/*设置字体大小*/
+text-align: center;/*字体居中*/
+cursor: pointer;/*设置鼠标箭头手势*/
+}
+.button2:hover{/*鼠标移动时的颜色变化*/
+background-color: rgb(255, 8, 8);
+}

@@ -1,0 +1,187 @@
+.addbook
+{
+width:100%;
+background-image:url(/media/project_img/xiansan.jpg);
+background-size: cover;
+}
+
+.addbook-box{
+width:600px;
+height:900px;
+top:50px;
+margin:0 auto;
+background:white;
+border-radius:30px;
+border: 3px outset;
+opacity:0.9;
+
+}
+
+
+.input-text{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius:10px;
+    width: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: kaiti;
+}
+
+input:focus{
+  border-color: #ff6c6cd5;
+  outline: 0;
+   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255, 81, 81, 0.749);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255, 107, 107, 0.699)
+}
+
+label{
+font-size: 20px;
+font-family: kaiti;
+}
+
+
+.upload-file{
+      position: relative;
+      width: 200px;
+      padding: 15px 20px;
+      border: 1px solid rgba(255, 151, 151, 0.201);
+      border-radius: 5px;
+      background-color: rgba(255, 183, 199, 0.777);
+      color: #333333;
+      font-size: 14px;
+      text-align: center;
+      overflow: hidden;
+}
+
+.upload-file span{ //单行显示
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 20px;
+      font-family: kaiti;
+}
+
+.upload-file:hover{ //简单的hover效果
+      font-size: 15px;
+      border-color: rgba(252, 59, 59, 0.777);
+}
+
+.upload-file input[type='file']{
+      height: 100%;
+      width: 100%;
+      position: absolute; //设置为绝对定位，不会影响到其他元素
+      top: 0;
+      right: 0;
+      opacity: 0;   //透明度为0
+      filter: alpha(opacity=0);
+      cursor: pointer;
+}
+
+.jianjie {
+width:500px;
+height:150px;
+resize:none;
+font-size: 20px;
+font-family: kaiti;
+}
+
+.bt{
+background-color:rgba(255, 183, 199, 0.777);
+outline-style: none;
+border: 1px solid #ccc;
+border-radius:10px;
+padding: 13px 16px;
+width: 200px;
+font-size: 30px;
+font-family: kaiti;
+}
+
+
+
+
+.tou_xiang-box{
+width:100px;
+height:100px;
+background:pink;
+border-radius:50px;
+float:left;
+}
+
+.tx_img{
+width:100px;
+height:100px;
+border-radius:50px;
+}
+
+
+.button{
+width: 100px;/*设置按钮宽度*/
+height: 50px;/*设置按钮高度*/
+color:white;/*字体颜色*/
+
+float:left;
+margin-left:50px;
+
+
+
+background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+border-radius: 10px;/*让按钮变得圆滑一点*/
+border-width: 0;/*消去按钮丑的边框*/
+
+outline: none;/*取消轮廓*/
+font-family: KaiTi;/*字体设置为楷体*/
+font-size: 20px;/*设置字体大小*/
+text-align: center;/*字体居中*/
+cursor: pointer;/*设置鼠标箭头手势*/
+}
+.button:hover{/*鼠标移动时的颜色变化*/
+background-color: rgb(255, 8, 8);
+}
+
+.button2{
+width: 100px;/*设置按钮宽度*/
+height: 50px;/*设置按钮高度*/
+color:white;/*字体颜色*/
+
+float:right;
+margin-left:50px;
+
+
+
+background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+border-radius: 10px;/*让按钮变得圆滑一点*/
+border-width: 0;/*消去按钮丑的边框*/
+
+outline: none;/*取消轮廓*/
+font-family: KaiTi;/*字体设置为楷体*/
+font-size: 20px;/*设置字体大小*/
+text-align: center;/*字体居中*/
+cursor: pointer;/*设置鼠标箭头手势*/
+}
+.button2:hover{/*鼠标移动时的颜色变化*/
+background-color: rgb(255, 8, 8);
+}
+
+
+
+
+.input-text-2{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius:10px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: kaiti;
+}
+
+.input-text-3{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius:10px;
+    width: 250px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: kaiti;
+}

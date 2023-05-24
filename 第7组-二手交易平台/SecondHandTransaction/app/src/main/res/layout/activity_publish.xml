@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PublishActivity">
+    <TextView
+        android:id="@+id/my_te11"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="发布商品"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="20dp"/>
+
+    <ImageView
+        android:layout_below="@id/my_te11"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/rr"/>
+
+
+    <RelativeLayout
+        android:id="@+id/re_fabu"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/back6">
+
+        <ImageView
+            android:id="@+id/pu_im1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_baseline_local_police_24"/>
+
+        <TextView
+            android:id="@+id/btn_publish"
+            android:layout_below="@id/pu_im1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:text="发闲置"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_below="@id/btn_publish"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:textSize="10dp"
+            android:text="快速发布 个人自由卖"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/re_shengxin"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/back6">
+
+        <ImageView
+            android:id="@+id/pu_im2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_baseline_photo_camera_24"/>
+
+        <TextView
+            android:id="@+id/test1"
+            android:layout_below="@id/pu_im2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:text="省心卖"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_below="@id/test1"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:textSize="10dp"
+            android:text="好货严选 平台帮你卖"/>
+
+    </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>

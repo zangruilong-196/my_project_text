@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<style>
+ body {
+   background:url("/static/雪.gif")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算并查看与角色相关的前10个词</title>
+</head>
+<body>
+<h1>
+    <p style="text-align:center">计算并查看与角色相关的前10个词</p>
+</h1>
+<center>
+    <form action="{% url 'juese_xiangguanci_10_out' %}" method="get">
+            <p style="text-align:center">角色：<input type="text" name="name" /></p>
+            <p style="text-align:center"> <input type="submit" value="确定" />
+    </form>
+
+
+</center>
+
+
+</body>
+</html>

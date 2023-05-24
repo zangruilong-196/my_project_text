@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<head>
+    <title>女频</title>
+    <link rel="stylesheet" href="/static/zhuye.css">
+</head>
+
+
+
+<body>
+    <div class="home">
+        <div class="content">
+            <div class="stars"></div>
+            <img class="bgc" src="/static/桃花3.gif" width="100%" alt="">
+            <h3 class="title">欢迎使用</h3>
+            <h3 class="titles">这是书城，所有的书都在这啦~</h3>
+            <!-- <img class="icon" src="images/星空.jpg" alt="">  -->
+            <div class='ribbon'>
+
+                <a href="{% url 'shouye' %}"><span>书架</span></a>
+                <a href="{% url 'shucheng' %}"><span>书城</span></a>
+                <a href="{% url 'zhushou' %}"><span>AI</span></a>
+                <a href="{% url 'geren' %}"><span>个人</span></a>
+                <a href="{% url 'gengduo' %}"><span>更多</span></a>
+
+            </div>
+        </div>
+        <div>
+
+            <style type="text/css">
+			button{
+				width:100px;
+				height: 50px;
+			}
+            </style>
+
+
+            <br>
+            <br>
+
+            <center>
+            <form action="{% url 'sousuo' %}" method="get">
+
+                <input type="text" name="bookname" placeholder="请输入想找的书"style="width:250px;height:30px"/>
+                <input type="submit" value="搜索" style="width:70px;height:30px"/>
+            </form>
+
+                <p style="color: #ff0000;text-align: center">{{error_name}}</p>
+            </center>
+            <br/>
+            <br/>
+            <br/>
+
+
+            <a href="{% url 'addbook' %}"><button type="button">添加</button></a>
+
+
+            <style type="text/css">
+            ul {
+		    list-style-type: none;     <!--list-style-type 属性设置列表项标记的类型。-->
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;     <!--超出部分隐藏//scroll：超出部分滚动-->>
+		    background-color: #303030;
+		    }
+		    li {
+		    float: right;
+		    }
+
+		    li a {
+		    display: block;
+		    color: black;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		    }
+
+		    li a:hover {
+		    background-color: #4CAF50;
+		    }
+		    li a.active {
+		    background-color: #4CAF50;
+		    color: white;
+		    }
+            </style>
+
+
+
+
+            <ul>
+
+				<!--:active向活动的链接添加特殊的样式。当你点击一个链接时它变成活动链接。-->
+				<li><a href="{% url 'kind' %}" target="_self">分类</a></li>
+				<li><a href="{% url 'menbook' %}" target="_self">男频</a></li>
+				<li><a class="active" href="{% url 'womenbook' %}" target="_self">女频</a></li>
+                <li><a href="{% url 'shucheng' %}" target="_self">书库</a></li>
+			</ul>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+
+            <center><h3>都是小仙女喜欢的哟~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄</h3></center>
+
+            <center>
+
+
+
+                <style type="text/css">
+                    table.hovertable {
+                        font-family: verdana, arial, sans-serif;
+                        font-size: 30px;
+                        color: #333333;
+                        border-width: 40px;
+                        border-color: #999999;
+                        border-collapse: collapse;
+                    }
+
+                    table.hovertable th {
+                        background-color: #c3dde0;
+                        border-width: 1px;
+                        padding: 8px;
+                        border-style: solid;
+                        border-color: #a9c6c9;
+                    }
+
+                    table.hovertable tr {
+                        background-color: #d4e3e5;
+                    }
+
+                    table.hovertable td {
+                        border-width: 1px;
+                        padding: 8px;
+                        border-style: solid;
+                        border-color: #a9c6c9;
+                    }
+                </style>
+
+                <!-- Table goes in the document BODY -->
+
+                <table class="hovertable">
+                    <tr>
+                        <td>封面</td>
+                        <td>书名</td>
+                        <td>作者</td>
+                        <td>价格</td>
+                        <td>操作</td>
+                    </tr>
+                    {%for i in wangbooks%}
+                    <tr>
+                        <td><img src="/media/{{i.img}}" alt="" width="100" /></td>
+                        <td>{{i.bookname}}</td>
+                        <td>{{i.authors}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                            <a href="/xiaogu/deletebook/?ID={{i.id}}"><button>删除</button></a>
+                            <a href="/xiaogu/changebook/?ID={{i.id}}&NAME={{i.bookname}}&AUTHORS={{i.authors}}"><button>修改</button></a>
+                            <a href="/xiaogu/xiangxi/?NAME={{i.bookname}}"><button>详细</button></a>
+                            <a href="/xiaogu/goumai/?BOOKNAME={{i.bookname}}&AUTHORS={{i.authors}}&KIND={{i.kind}}&IMG={{i.img}}&DATA={{i.data}}"><button>购买</button></a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    {%for i in wangbooks2%}
+                    <tr>
+                        <td><img src="/media/{{i.img}}" alt="" width="100" /></td>
+                        <td>{{i.bookname}}</td>
+                        <td>{{i.authors}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                            <a href="/xiaogu/deletebook/?ID={{i.id}}"><button>删除</button></a>
+                            <a href="/xiaogu/changebook/?ID={{i.id}}&NAME={{i.bookname}}&AUTHORS={{i.authors}}"><button>修改</button></a>
+                            <a href="/xiaogu/xiangxi/?NAME={{i.bookname}}"><button>详细</button></a>
+                            <a href="/xiaogu/goumai/?BOOKNAME={{i.bookname}}&AUTHORS={{i.authors}}&KIND={{i.kind}}&IMG={{i.img}}&DATA={{i.data}}"><button>购买</button></a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+
+
+            </center>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+  <!--小帅哥： https://unpkg.com/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json-->
+  <!--萌娘：https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json-->
+  <!--小可爱（女）：https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json-->
+  <!--小可爱（男）：https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json-->
+  <!--初音：https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json-->
+   <!-- 上边的不同链接显示的是不同的小人，这个可以根据需要来选择 下边的初始化部分，可以修改宽高来修改小人的大小，或者是鼠标移动到小人上的透明度，也可以修改小人在页面出现的位置。 -->
+  <script>
+    /*https://unpkg.com/live2d-widget-model-chitose/assets/chitose.model.json*/
+    L2Dwidget.init({ "model": { jsonPath:
+          "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
+        "scale": 1 }, "display": { "position": "right", "width": 110, "height": 150,
+        "hOffset": 0, "vOffset": -20 }, "mobile": { "show": true, "scale": 0.5 },
+      "react": { "opacityDefault": 0.8, "opacityOnHover": 0.1 } });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+            <audio autoplay="autoplay" id="audio" loop="loop">
+                <source src="/static/马步谣_双笙.mp3" type="audio/MP3">
+            </audio>
+            <img class="music_img" src="/static/马步谣.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    let mucics = document.getElementById('audio')
+    document.body.addEventListener('mousemove', function () {
+        setTimeout(() => {
+            mucics.play();
+        }, 2000);
+    }, false);
+</script>
+
+</html>

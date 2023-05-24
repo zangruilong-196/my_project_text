@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+<center>
+    {% load static %}
+    <div class="xiangxi-box">
+        {%for b in booklist%}
+        <div class="bookxinxibox">
+            <div class="bookimgbox">
+                <img src="/media/{{b.bookimg}}" class="bookimg">
+            </div>
+            <div class="bookname-box"><p class="bookname">{{b.bookname}}</p></div>
+            <div class="zuozhe-box"><p class="zuozhe">作者：{{b.author}}</p></div>
+            {%for fb in fabulist%}
+            <div class="fabu-box"><p class="fabu">发布者：{{fb.username}}</p></div>
+            {%endfor%}
+            <div class="booklab-box"><p class="leibie">类别：</p>
+                <p class="lab1">&nbsp;&nbsp;{{b.label_1}}&nbsp;&nbsp;</p>
+                <p class="lab2">&nbsp;&nbsp;{{b.label_2}}&nbsp;&nbsp;</p>
+                <p class="lab3">&nbsp;&nbsp;{{b.label_3}}&nbsp;&nbsp;</p>
+            </div>
+            <div class="act-box">
+                <style type="text/css">
+                #book-button{
+                width: 150px;/*设置按钮宽度*/
+                height: 50px;/*设置按钮高度*/
+                color:white;/*字体颜色*/
+
+                float:left;
+
+                margin-top:21px;
+
+
+
+                background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+                border-radius: 10px;/*让按钮变得圆滑一点*/
+                border-width: 0;/*消去按钮丑的边框*/
+
+                outline: none;/*取消轮廓*/
+                font-family: KaiTi;/*字体设置为楷体*/
+                font-size: 20px;/*设置字体大小*/
+                text-align: center;/*字体居中*/
+                cursor: pointer;/*设置鼠标箭头手势*/
+                }
+                #book-button:hover{/*鼠标移动时的颜色变化*/
+                background-color: rgb(255, 8, 8);
+                }
+
+
+                #gomai-button{
+                width: 100px;/*设置按钮宽度*/
+                height: 50px;/*设置按钮高度*/
+                color:white;/*字体颜色*/
+
+                float:left;
+                margin-left:50px;
+
+
+
+                background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+                border-radius: 10px;/*让按钮变得圆滑一点*/
+                border-width: 0;/*消去按钮丑的边框*/
+
+                outline: none;/*取消轮廓*/
+                font-family: KaiTi;/*字体设置为楷体*/
+                font-size: 20px;/*设置字体大小*/
+                text-align: center;/*字体居中*/
+                cursor: pointer;/*设置鼠标箭头手势*/
+                }
+                #gomai-button:hover{/*鼠标移动时的颜色变化*/
+                background-color: rgb(255, 8, 8);
+                }
+
+
+
+                #book-button2{
+                width: 80px;/*设置按钮宽度*/
+                height: 50px;/*设置按钮高度*/
+                color:white;/*字体颜色*/
+
+                float:right;
+                margin-right:20px;
+
+
+
+                background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+                border-radius: 25px;/*让按钮变得圆滑一点*/
+                border-width: 0;/*消去按钮丑的边框*/
+
+                outline: none;/*取消轮廓*/
+                font-family: KaiTi;/*字体设置为楷体*/
+                font-size: 35px;/*设置字体大小*/
+                text-align: center;/*字体居中*/
+                cursor: pointer;/*设置鼠标箭头手势*/
+                }
+                #book-button2:hover{/*鼠标移动时的颜色变化*/
+                background-color: rgb(255, 8, 8);
+                }
+
+
+
+                #book-button3{
+                width: 80px;/*设置按钮宽度*/
+                height: 50px;/*设置按钮高度*/
+                color:white;/*字体颜色*/
+
+                float:right;
+                margin-right:20px;
+
+
+
+
+
+                background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+                border-radius: 25px;/*让按钮变得圆滑一点*/
+                border-width: 0;/*消去按钮丑的边框*/
+
+                outline: none;/*取消轮廓*/
+                font-family: KaiTi;/*字体设置为楷体*/
+                font-size: 20px;/*设置字体大小*/
+                text-align: center;/*字体居中*/
+                cursor: pointer;/*设置鼠标箭头手势*/
+                }
+                #book-button3:hover{/*鼠标移动时的颜色变化*/
+                background-color: rgb(255, 8, 8);
+                }
+
+                </style>
+
+                <a href="/bookmall/reade_book/?ID={{b.id}}&UID={{request.session.id}}">
+                <button id="book-button">立即阅读</button>
+                </a>
+
+                <form action="{% url 'gomai' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" style="display:none;" name="book_id" value="{{b.id}}"><br>
+                    <input type="text" style="display:none;" name="user_id" value="{{request.session.id}}">
+
+                    <button id="gomai-button" type="submit">购买</button>
+                </form>
+
+
+                <input type="text" style="display:none;" id="book-id" name="book-id" value="{{b.id}}"><br>
+                <input type="text" style="display:none;" id="user-id" name="user-id" value="{{request.session.id}}"><br>
+
+
+                <p style="float:right;margin-right:40px;font-family:楷体;color: rgba(46, 46, 46, 0.514);">
+                    {% if fav.fav_status %}
+                        {{fav.shoucang_num}}
+                    {% else %}
+                        {{fav.shoucang_num}}
+                    {% endif %}
+                </p>
+                <button id="book-button2">
+                    {% if fav.fav_status %}
+                        ♥
+                    {% else %}
+                        ♡
+                    {% endif %}
+                </button>
+
+
+
+
+
+
+                <p style="float:right;margin-right:40px;font-family:楷体;color: rgba(46, 46, 46, 0.514);">
+                    {% if fav.dianz_status %}
+                        {{fav.dianzan_num}}
+                    {% else %}
+                        {{fav.dianzan_num}}
+                    {% endif %}
+                </p>
+
+                <button id="book-button3">
+                    {% if fav.dianz_status %}
+                        已点赞
+                    {% else %}
+                        点赞
+                    {% endif %}
+                </button>
+
+
+            </div>
+            <div class="price-box">
+                <p class="price">{{b.price}}币</p>
+            </div>
+        </div>
+
+         <div class="jianjie-bookbox">
+             <p class="jj1">简介</p>
+             <textarea id="jianjie" class="jianjie" >{{b.jianjie}}</textarea>
+        </div>
+
+        <div class="pinglun-box">
+            <div class="comment_post">
+                <div id="commentform_title">发表评论</div>
+                <textarea rows="10" cols="60" id="comment_content" placeholder="说点什么吧"></textarea>
+                <p><button>提交评论</button></p>
+            </div>
+
+            <div class="pinglun_show_box">
+                <div class="comment_show">
+                    <div class="feedback_area_title">评论列表</div>
+                    <div class="comment_list">
+                        {% for comment in comment_list %}
+                        <div>
+                            <p>第{{ forloop.counter}}楼 -> By:{{ comment.comment_author.username }} -> {{ comment.comment_time }} -> <button class="reply" username={{ comment.comment_author.username }} pk={{ comment.pk }}>回复</button></p>
+                            {% if comment.pre_comment_id %}
+                            <p id="p">原评论内容：{{ comment.pre_comment.comment_pinglun }}</p>
+                            {% endif %}
+                            <p>评论内容：{{ comment.comment_pinglun }}</p>
+                            <hr>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {%endfor%}
+    </div>
+
+
+</center>
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/textarea-jianjie.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/bttom-ajax.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/pinglun.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/book_xiangxi.css">
+</body>
+</html>

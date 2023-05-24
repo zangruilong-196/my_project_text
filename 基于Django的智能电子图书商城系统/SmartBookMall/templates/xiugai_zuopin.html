@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改作品信息</title>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/static/css/xg_zp_xx.css">
+  </head>
+  <body>
+  <div class="addbook">
+      <br><br><br><br><br>
+      <center><p style="font-size:15px;color:#5d5d5daa;">修改作品</p></center>
+      {% for book in  zuo_pin_list %}
+
+      <div class="addbook-box"><br>
+          <center>
+              <div style="width:600px;height:200px;margin-top:20px;">
+                  <div class="tou_xiang-box">
+                      <img src="/media/{{book.bookimg}}" class="book_img" height="180px">
+                  </div>
+              </div>
+          </center>
+
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="on">
+            {% csrf_token %}
+            <p style="text-align:center">&nbsp;&nbsp;<input type="text" name="bookname" class="input-text" placeholder="书名" value="{{book.bookname}}"/>&nbsp;&nbsp;</p>
+            <p style="text-align:center">&nbsp;&nbsp;<input type="text" name="author" class="input-text" placeholder="作者" value="{{book.author}}"/>&nbsp;&nbsp;</p>
+            <p style="text-align:center">&nbsp;&nbsp;<input type="number" min="0" name="price" class="input-text" placeholder="价格" value="{{book.price}}"/>&nbsp;&nbsp;</p>
+
+
+            <p style="text-align:center">当前标签：{{book.label_1}}  {{book.label_2}} {{book.label_3}} </p>
+            <p style="text-align:center">
+                <label>奇幻玄幻</label><input type="checkbox" name="kind-1" value="奇幻玄幻" onclick="return checkCount(this)"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>武侠仙侠</label><input type="checkbox" name="kind-2" value="武侠仙侠" onclick="return checkCount(this)"/><br>
+                <label>历史军事</label><input type="checkbox" name="kind-3" value="历史军事" onclick="return checkCount(this)"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>都市娱乐</label><input type="checkbox" name="kind-4" value="都市娱乐" onclick="return checkCount(this)"/><br>
+                <label>竞技同人</label><input type="checkbox" name="kind-5" value="竞技同人" onclick="return checkCount(this)"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>科幻游戏</label><input type="checkbox" name="kind-6" value="科幻游戏" onclick="return checkCount(this)"/><br>
+                <label>悬疑灵异</label><input type="checkbox" name="kind-7" value="悬疑灵异" onclick="return checkCount(this)"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>次元幻想</label><input type="checkbox" name="kind-8" value="次元幻想" onclick="return checkCount(this)"/><br>
+                <label>科普教育</label><input type="checkbox" name="kind-9" value="科普教育" onclick="return checkCount(this)"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label>期刊读物</label><input type="checkbox" name="kind-10" value="期刊读物" onclick="return checkCount(this)"/><br>
+            </p>
+           <center>
+                <div class="upload-file">
+                    <input type="file" class="input-file" id="input-file1" name="bookimg" accept="image/*">
+                    <span class="tip" id="tip1">上传封面图片</span>
+                </div>
+           </center>
+            <br>
+           <center>
+               <div class="upload-file">
+                   <input type="file" class="input-file" id="input-file2" name="bookdata" accept="text/plain">
+                   <span class="tip" id="tip2">上传文本文件(txt文件)</span>
+               </div>
+           </center>
+            <br>
+
+            <center>
+
+                <textarea name="jianjie" class="jianjie"  id="jianjie" placeholder="简介">{{book.jianjie}}</textarea>
+
+            </center>
+
+            <input type="text" style="display:none;" name="bid" value="{{book.id}}"><br>
+
+            {% endfor %}
+
+
+            <div style="width:300px;height:50px;margin-top:20px;float:right;">
+                <button class="button" type="submit">修改</button>
+            </div>
+
+
+
+        </form>
+          <div style="width:300px;height:50px;margin-top:20px;float:left;">
+              <a href="/bookmall/shouye/">
+                  <button class="button2">取消</button>
+              </a>
+          </div>
+
+
+
+    </div>
+
+<br><br><br><br><br>
+</div>
+
+
+    <!-- Script -->
+
+    <script type="text/javascript">
+    var fileInput1 = document.getElementById("input-file1");
+    var tip1 = document.getElementById("tip1");
+
+    fileInput1.addEventListener('change',function(e){ //监听change事件，选择文件后触发
+      if(this.files.length === 1){ //处理文件名
+        tip1.textContent = this.files[0].name;
+      }
+      else {
+        tip1.textContent = '已选择 ' + this.files.length + ' 个文件';
+      }
+    })
+</script>
+     <script type="text/javascript">
+    var fileInput2 = document.getElementById("input-file2");
+    var tip2 = document.getElementById("tip2");
+
+    fileInput2.addEventListener('change',function(e){ //监听change事件，选择文件后触发
+      if(this.files.length === 1){ //处理文件名
+        tip2.textContent = this.files[0].name;
+      }
+      else {
+        tip2.textContent = '已选择 ' + this.files.length + ' 个文件';
+      }
+    })
+</script>
+
+  <script src="/static/js/mantianfeihua.js"></script>
+
+
+  	{% if messages %}
+		<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+        </script>
+		{% endif %}
+
+  </body>
+</html>

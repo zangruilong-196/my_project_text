@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/shouye.css">
+	<script src="/static/js/echarts.min.js"></script>
+    <title>首页</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+
+
+
+
+<div class="top">
+    <div class="top_nav" ><p class="ziti1">欢迎你：{{ request.session.name }}</p></div>
+    <canvas></canvas>
+
+
+
+</div>
+
+
+
+<!--导航栏-->
+<div>
+	<div class="container">
+		<nav>
+			<ul>
+				<li><a class="Page_shouye" onclick="shouye_click()">首页</a></li>
+				<li><a class="Page_shucheng" onclick="shucheng_click()">书城</a></li>
+				<li><a class="Page_shequ" onclick="shequ_click()">社区</a></li>
+				<li><a class="Page_shujia" onclick="shujia_click()">书架</a></li>
+				<li><a class="Page_wode" onclick="wode_click()">我的</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="sou_suo_box">
+		<div class="search">
+			<form action="{% url 'sousuo' %}" method="post">
+				{% csrf_token %}
+				<input placeholder="请输入书名或作者..." name="keyword" type="text">
+				<button type="submit"></button>
+			</form>
+		</div>
+	</div>
+
+
+
+
+	<div class="shouye">
+		<center><h1>首页</h1></center>
+		<center>
+			<div style="width:1200px;height:1500px;background:white;border-radius:50px;">
+				<div style="width:1100px;height:30px;float:left;margin-left:20px;margin-top:10px;">
+					<p style="margin:0 auto;font-size:15px;color:#5d5d5daa;">数据来自纵横中文网</p>
+				</div>
+				<div id="tu1" style="width:800px;height:500px;margin-top:10px;margin-left:30px;float:left;">
+					<script type="text/javascript">
+						var myChart_1 = echarts.init(document.getElementById('tu1'));
+						var option_1 = {title : {text : '纵横网各题材热度'},
+										tooltip : {},
+										legend : {data : [ '热度' ]},
+										xAxis : {data : {{zh_label_dic_top.labename|safe}}   },
+										yAxis : {},
+										series : [ {name : '热度',type : 'bar',data : {{zh_label_dic_top.labenum|safe}}  } ]
+										};
+						myChart_1.setOption(option_1);
+					</script>
+				</div>
+				<div style="width:300px;height:500px;margin-top:10px;margin-left:30px;float:left;"></div>
+				<div style="width:300px;height:500px;margin-top:30px;margin-left:30px;float:left;"></div>
+				<div id="tu2" style="width:800px;height:500px;margin-top:30px;margin-left:30px;float:left;">
+					<script type="text/javascript">
+						var myChart_2 = echarts.init(document.getElementById('tu2'));
+						var option_2 = {title : {text : '纵横网top10'},
+										tooltip : {},
+										legend : {data : [ '月票' ]},
+										xAxis : {data : {{zh_book_dic_top10.zh_bookname_top10|safe}}  },
+										yAxis : {},
+										series : [ {name : '月票',type : 'bar',data : {{zh_book_dic_top10.zh_yuepiao_top10|safe}}   } ]
+										};
+						myChart_2.setOption(option_2);
+					</script>
+
+
+				</div>
+				<div id="tu3" style="width:500px;height:350px;margin-top:30px;margin-left:30px;float:left;">
+					<script type="text/javascript">
+						var myChart_3 = echarts.init(document.getElementById('tu3'));
+						var option_3 = {title : {text : '男频女频读物占比'},
+										tooltip : {},
+										series: [{
+										type: 'pie',
+										data : [{value: {{boy_ping_list_num|safe}},name: '男频'},{value: {{gril_ping_list_num|safe}},name: '女频'}]
+										}]
+										};
+						myChart_3.setOption(option_3);
+					</script>
+				</div>
+				<div id="tu4" style="width:500px;height:350px;margin-top:30px;margin-left:30px;float:left;"></div>
+			</div>
+			<div style="width:1200px;background:white;border-radius:50px;margin-top:30px;">
+				<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;">
+					<p style="margin:0 auto;font-size:15px;color:#5d5d5daa;">综合榜top10</p>
+				</div>
+				<div style="width:1200px;height:800px;margin-top:30px;">
+					<ul style="list-style-type: none">
+						{%for b in zh_book_list_top10%}
+						<li class="items2">
+							<a href="{{b.data}}" style="text-decoration:none; color:black;">
+								<img src="{{b.img}}" class="book_img2" height="180px">
+								<p class="bookname2">{{b.bookname}}</p>
+								<p class="zuozhe2">作者：{{b.author}}</p>
+								<p class="price">月票：{{b.yuepiao}}</p>
+							</a>
+						</li>
+						{%endfor%}
+					</ul>
+					<div style="width:100px;height:100px;background:white;float:right;">
+						<ul style=" list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: white;width: 100px;float: right;">
+							<style type="text/css">
+									.zh-gd{
+									float: right;
+									}
+									.zh-gd a {
+									display: block;
+									color: black;
+									text-align: center;
+									padding: 20px 10px;
+									text-decoration: none;
+									}
+									.zh-gd a:hover {
+									background-color: #f95757d1;
+									}
+									</style>
+							<li class="zh-gd">
+								<a onclick="zh_gd_click()">
+									<p style="auto;font-size:15px;color:#5d5d5daa;">更多>></p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<script type="text/javascript">
+					function zh_gd_click(){
+					document.getElementById("zh_gd").style.display="block";//显示
+					}
+					</script>
+				</div>
+
+
+
+				<div id="zh_gd" style="display:none;width:1200px;height:14000px;margin-top:30px;">
+					<ul style="list-style-type: none">
+						{%for b in zh_book_list_top_more%}
+						<li class="items2">
+							<a href="{{b.data}}" style="text-decoration:none; color:black;">
+								<img src="{{b.img}}" class="book_img2" height="180px">
+								<p class="bookname2">{{b.bookname}}</p>
+								<p class="zuozhe2">作者：{{b.author}}</p>
+								<p class="price">月票：{{b.yuepiao}}</p>
+							</a>
+						</li>
+						{%endfor%}
+					</ul>
+					<div style="width:100px;height:100px;background:white;float:right;">
+						<ul style=" list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: white;width: 100px;float: right;">
+							<style type="text/css">
+									.zh-gd{
+									float: right;
+									}
+									.zh-gd a {
+									display: block;
+									color: black;
+									text-align: center;
+									padding: 20px 10px;
+									text-decoration: none;
+									}
+									.zh-gd a:hover {
+									background-color: #f95757d1;
+									}
+									</style>
+							<li class="zh-gd">
+								<a onclick="zh_gd_s_click()">
+									<p style="auto;font-size:15px;color:#5d5d5daa;"><< 收起</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<script type="text/javascript">
+					function zh_gd_s_click(){
+					document.getElementById("zh_gd").style.display="none";//显示
+					}
+					</script>
+					<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+				</div>
+
+				<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+			</div>
+
+
+			<div style="width:1200px;height:7000px;background:white;border-radius:50px;margin-top:30px;">
+				<div style="width:1100px;height:35px;margin-top:30px;"></div>
+				<div style="width:300px;height:35px;margin-top:30px;">
+					<p style="margin:0 auto;font-size:20px;color:#5d5d5daa;float:left;">猜你喜欢：</p>
+					<p style="margin:0 auto;font-size:30px;color:#ff6700;float:left;">{{most_love_label}}</p>
+				</div>
+				<div style="width:1100px;height:35px;margin-top:30px;"></div>
+				{% if most_love_label == "ʕ  •ᴥ•ʔ……" %}
+				<p style="margin:0 auto;font-size:50px;color:#5d5d5daa;">对不起，没找到你喜欢的  ʕ  •ᴥ•ʔ……</p>
+				{% endif %}
+
+				<ul style="list-style-type: none">
+					{%for b in zh_love_book_list%}
+					<li class="items2">
+						<a href="{{b.data}}" style="text-decoration:none; color:black;">
+							<img src="{{b.img}}" class="book_img2" height="180px">
+							<p class="bookname2">{{b.bookname}}</p>
+							<p class="zuozhe2">作者：{{b.author}}</p>
+							<p class="price">月票：{{b.yuepiao}}</p>
+						</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+		</center>
+
+
+	</div>
+	<div class="shucheng">
+		<center><h1>书城</h1></center>
+		<ul style=" list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: white;width: 265px;float: right;">
+			<style type="text/css">
+			.lli{
+			float: right;
+			}
+		    .lli a {
+		    display: block;
+		    color: black;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		    }
+
+		    .lli a:hover {
+		    background-color: #f95757d1;
+		    }
+
+			</style>
+			<li class="lli"><a onclick="fenlei_click()">分类</a></li>
+			<li class="lli"><a onclick="boy_click()">男频</a></li>
+			<li class="lli"><a onclick="gril_click()">女频</a></li>
+			<li class="lli"><a onclick="shuku_click()">书库</a></li>
+		</ul>
+		<script type="text/javascript">
+			function fenlei_click(){
+			document.getElementById("shuku").style.display="none";//隐藏
+			document.getElementById("gril").style.display="none";
+			document.getElementById("boy").style.display="none";
+			document.getElementById("fenlei").style.display="block";//显示
+				}
+			function boy_click(){
+			document.getElementById("shuku").style.display="none";
+			document.getElementById("gril").style.display="none";
+			document.getElementById("boy").style.display="block";
+			document.getElementById("fenlei").style.display="none";
+				}
+			function gril_click(){
+			document.getElementById("shuku").style.display="none";
+			document.getElementById("gril").style.display="block";
+			document.getElementById("boy").style.display="none";
+			document.getElementById("fenlei").style.display="none";
+				}
+			function shuku_click(){
+			document.getElementById("shuku").style.display="block";
+			document.getElementById("gril").style.display="none";
+			document.getElementById("boy").style.display="none";
+			document.getElementById("fenlei").style.display="none";
+				}
+
+		</script>
+		<div style="width:1200px;height:50px;"></div>
+		<div class="shuku" id="shuku" style="display:block">
+			<center><h1>书库</h1></center>
+			<center>
+				<div class="book-box">
+					<ul style="list-style-type: none">
+						{%for b in smartbookslist%}
+						<li class="items">
+							<a href="/bookmall/book_xiangxi/?ID={{b.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+								<img src="/media/{{b.bookimg}}" class="book_img" height="180px">
+								<p class="bookname">{{b.bookname}}</p>
+								<p class="zuozhe">作者：{{b.author}}</p>
+								<p class="price">{{b.price}}币</p>
+
+							</a>
+						</li>
+						{%endfor%}
+					</ul>
+
+
+				</div>
+			</center>
+		</div>
+		<div class="gril" id="gril" style="display:none">
+			<center><h1>女频</h1></center>
+			<center>
+				<div class="book-box">
+					<ul style="list-style-type: none">
+						{%for lady in lady_bookslist%}
+						<li class="items">
+							<a href="/bookmall/book_xiangxi/?ID={{lady.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+								<img src="/media/{{lady.bookimg}}" class="book_img" height="180px">
+								<p class="bookname">{{lady.bookname}}</p>
+								<p class="zuozhe">作者：{{lady.author}}</p>
+								<p class="price">{{lady.price}}币</p>
+
+							</a>
+						</li>
+						{%endfor%}
+
+					</ul>
+
+
+				</div>
+			</center>
+		</div>
+		<div class="boy" id="boy" style="display:none">
+			<center><h1>男频</h1></center>
+			<center>
+				<div class="book-box">
+					<ul style="list-style-type: none">
+						{%for man in man_bookslist%}
+						<li class="items">
+							<a href="/bookmall/book_xiangxi/?ID={{man.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+								<img src="/media/{{man.bookimg}}" class="book_img" height="180px">
+								<p class="bookname">{{man.bookname}}</p>
+								<p class="zuozhe">作者：{{man.author}}</p>
+								<p class="price">{{man.price}}币</p>
+							</a>
+						</li>
+						{%endfor%}
+
+					</ul>
+
+
+				</div>
+			</center>
+		</div>
+		<div class="fenlei" id="fenlei" style="display:none">
+			<center><h1>分类</h1></center>
+			<center>
+				<div class="fl-active-box">
+					<button class="button-fenlei" onclick="fl_qh_click()">奇幻玄幻</button>
+					<button class="button-fenlei" onclick="fl_wx_click()">武侠仙侠</button>
+					<button class="button-fenlei" onclick="fl_lz_click()">历史军事</button>
+					<button class="button-fenlei" onclick="fl_dy_click()">都市娱乐</button>
+					<button class="button-fenlei" onclick="fl_jt_click()">竞技同人</button>
+					<button class="button-fenlei" onclick="fl_ky_click()">科幻游戏</button>
+					<button class="button-fenlei" onclick="fl_xl_click()">悬疑灵异</button>
+					<button class="button-fenlei" onclick="fl_ch_click()">次元幻想</button>
+					<button class="button-fenlei" onclick="fl_kj_click()">科普教育</button>
+					<button class="button-fenlei" onclick="fl_qd_click()">期刊读物</button>
+				</div>
+			</center>
+			<script type="text/javascript">
+			function fl_qh_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";//隐藏
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="block";//显示
+				}
+			function fl_wx_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";//隐藏
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="block";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_lz_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";//隐藏
+			document.getElementById("fl_lz").style.display="block";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_dy_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="block";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_jt_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="block";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_ky_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";//隐藏
+			document.getElementById("fl_ky").style.display="block";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_xl_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="block";
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_ch_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="block";
+			document.getElementById("fl_xl").style.display="none";
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_kj_click(){
+			document.getElementById("fl_qd").style.display="none";//隐藏
+			document.getElementById("fl_kj").style.display="block";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			function fl_qd_click(){
+			document.getElementById("fl_qd").style.display="block";
+			document.getElementById("fl_kj").style.display="none";
+			document.getElementById("fl_ch").style.display="none";
+			document.getElementById("fl_xl").style.display="none";
+			document.getElementById("fl_ky").style.display="none";
+			document.getElementById("fl_jt").style.display="none";
+			document.getElementById("fl_dy").style.display="none";
+			document.getElementById("fl_lz").style.display="none";
+			document.getElementById("fl_wx").style.display="none";
+			document.getElementById("fl_qh").style.display="none";
+				}
+			</script>
+
+			<center>
+				<div class="fl_qh" id="fl_qh" style="display:block">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_qh in fl_qh_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_qh.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_qh.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_qh.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_qh.author}}</p>
+									<p class="price">{{fl_qh.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_wx" id="fl_wx" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_wx in fl_wx_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_wx.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_wx.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_wx.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_wx.author}}</p>
+									<p class="price">{{fl_wx.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_lz" id="fl_lz" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_lz in fl_lz_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_lz.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_lz.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_lz.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_lz.author}}</p>
+									<p class="price">{{fl_lz.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_dy" id="fl_dy" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_dy in fl_dy_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_dy.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_dy.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_dy.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_dy.author}}</p>
+									<p class="price">{{fl_dy.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_jt" id="fl_jt" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_jt in fl_jt_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_jt.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_jt.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_jt.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_jt.author}}</p>
+									<p class="price">{{fl_jt.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_ky" id="fl_ky" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_ky in fl_ky_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_ky.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_ky.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_ky.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_ky.author}}</p>
+									<p class="price">{{fl_ky.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_xl" id="fl_xl" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_xl in fl_xl_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_xl.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_xl.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_xl.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_xl.author}}</p>
+									<p class="price">{{fl_xl.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_ch" id="fl_ch" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_ch in fl_ch_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_ch.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_ch.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_ch.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_ch.author}}</p>
+									<p class="price">{{fl_ch.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_kj" id="fl_kj" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_kj in fl_kj_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_kj.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_kj.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_kj.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_kj.author}}</p>
+									<p class="price">{{fl_kj.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+
+				<div class="fl_qd" id="fl_qd" style="display:none">
+					<div class="book-box">
+						<ul style="list-style-type: none">
+							{%for fl_qd in fl_qd_list%}
+							<li class="items">
+								<a href="/bookmall/book_xiangxi/?ID={{fl_qd.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+									<img src="/media/{{fl_qd.bookimg}}" class="book_img" height="180px">
+									<p class="bookname">{{fl_qd.bookname}}</p>
+									<p class="zuozhe">作者：{{fl_qd.author}}</p>
+									<p class="price">{{fl_qd.price}}币</p>
+								</a>
+							</li>
+							{%endfor%}
+						</ul>
+					</div>
+				</div>
+			</center>
+		</div>
+
+
+	</div>
+
+
+
+	<div class="shequ">
+		<center><h1>社区</h1></center>
+
+		<center>
+			<div style="width:1200px;height:70px;background:white;border-radius:50px;margin-top:30px;">
+				<a href="{% url 'addbook' %}"><button class="button-fenlei">发布书籍</button></a>
+				<a href="{% url 'tiezi' %}"><button class="button-fenlei">发表帖子</button></a>
+			</div>
+
+			{% for tiezi in tiezi_list %}
+			<div style="width:1200px;background:white;border-radius:50px;margin-top:30px;">
+				<div style="width:1000px;height:120px;">
+					<div style="width:400px;height:100px;float:left;margin-left:20px;margin-top:30px;">
+						<div class="tou_xiang-box">
+							<img src="/media/{{tiezi.diary_author.touxiang}}" class="tx_img">
+						</div>
+						<div style="width:200px;height:100px;float:right;">
+							<p style="font-size:20px;">{{tiezi.diary_author.username}}</p>
+						</div>
+					</div>
+					<div style="width:500px;height:50px;float:left;margin-left:10px;margin-top:80px;">
+						<p style="font-size:15px;color:#5d5d5daa;">{{tiezi.diary_time}}</p>
+					</div>
+					<div style="width:1000px;height:50px;float:left;margin-left:10px;margin-top:80px;">
+						<p style="font-size:20px;color:#5d5d5daa;">帖子详情</p>
+					</div>
+				</div>
+				<div class="jianjie-bookbox">
+					<textarea id="jianjie" class="jianjie" >{{tiezi.diary_text}}</textarea>
+				</div>
+
+			</div>
+
+
+			{%endfor%}
+		</center>
+
+
+
+	</div>
+	<div class="shujia">
+		<center><h1>书架</h1></center>
+		<center>
+			<div class="book-box">
+				<ul style="list-style-type: none">
+					{%for sj_list in sj_book_list%}
+					<li class="items">
+						<a href="/bookmall/book_xiangxi/?ID={{sj_list.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+							<img src="/media/{{sj_list.bookimg}}" class="book_img" height="180px">
+							<p class="bookname">{{sj_list.bookname}}</p>
+							<p class="zuozhe">作者：{{sj_list.author}}</p>
+						</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+		</center>
+	</div>
+	<div class="wode">
+		<center><h1>我的</h1></center>
+		<center>
+			<div>
+				<button class="button-fenlei" onclick="wd_zh_click()">我的账户</button>
+				<button class="button-fenlei" onclick="wd_zp_click()">我的作品</button>
+				<button class="button-fenlei" onclick="wd_sc_click()">我的收藏</button>
+				<button class="button-fenlei" onclick="ls_jl_click()">历史记录</button>
+				<button class="button-fenlei" onclick="wd_pl_click()">我的帖子</button>
+				<button class="button-fenlei" onclick="gm_ls_click()">购买历史</button>
+			</div>
+
+			<script type="text/javascript">
+			function wd_zh_click(){
+			document.getElementById("gm_ls").style.display="none";//隐藏
+			document.getElementById("wd_pl").style.display="none";
+			document.getElementById("ls_jl").style.display="none";
+			document.getElementById("wd_sc").style.display="none";
+			document.getElementById("wd_zp").style.display="none";
+			document.getElementById("wd_zh").style.display="block";//显示
+				}
+			function wd_zp_click(){
+			document.getElementById("gm_ls").style.display="none";//隐藏
+			document.getElementById("wd_pl").style.display="none";
+			document.getElementById("ls_jl").style.display="none";
+			document.getElementById("wd_sc").style.display="none";
+			document.getElementById("wd_zp").style.display="block";
+			document.getElementById("wd_zh").style.display="none";
+				}
+			function wd_sc_click(){
+			document.getElementById("gm_ls").style.display="none";//隐藏
+			document.getElementById("wd_pl").style.display="none";
+			document.getElementById("ls_jl").style.display="none";
+			document.getElementById("wd_sc").style.display="block";
+			document.getElementById("wd_zp").style.display="none";
+			document.getElementById("wd_zh").style.display="none";
+				}
+			function ls_jl_click(){
+			document.getElementById("gm_ls").style.display="none";//隐藏
+			document.getElementById("wd_pl").style.display="none";
+			document.getElementById("ls_jl").style.display="block";
+			document.getElementById("wd_sc").style.display="none";
+			document.getElementById("wd_zp").style.display="none";
+			document.getElementById("wd_zh").style.display="none";
+				}
+			function wd_pl_click(){
+			document.getElementById("gm_ls").style.display="none";//隐藏
+			document.getElementById("wd_pl").style.display="block";
+			document.getElementById("ls_jl").style.display="none";
+			document.getElementById("wd_sc").style.display="none";
+			document.getElementById("wd_zp").style.display="none";
+			document.getElementById("wd_zh").style.display="none";
+				}
+			function gm_ls_click(){
+			document.getElementById("gm_ls").style.display="block";
+			document.getElementById("wd_pl").style.display="none";
+			document.getElementById("ls_jl").style.display="none";
+			document.getElementById("wd_sc").style.display="none";
+			document.getElementById("wd_zp").style.display="none";
+			document.getElementById("wd_zh").style.display="none";
+				}
+
+		</script>
+
+			<div id="wd_zh" style="display: block">
+				<div class="gr_zh_box">
+					<div class="tx-box-xx">
+						<div style="height:50px;"></div>
+						<div class="tou_xiang-box">
+							<img src="/media/{{touxiang}}" class="tx_img">
+						</div>
+						<div class="wd-name-box">
+							<div style="width:200px;height:100px;background:white;float:left;">
+								<p style="margin:0 auto;font-size:25px;">{{ request.session.name }}</p>
+								<p style="font-size:15px;color:#5d5d5daa;">累计阅读30天</p>
+							</div>
+							<div style="width:200px;height:100px;background:white;float:left;">
+								<p style="margin:0;font-size:15px;color:#5d5d5daa;">余额</p>
+								<p style="margin:0 auto;font-size:40px;margin-top:10px;color:#ff6700;font-family:楷体;">{{money}}币</p>
+							</div>
+							<div style="width:200px;height:100px;background:white;float:right;">
+								<ul style=" list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: white;width: 100px;float: right;">
+									<style type="text/css">
+									.cz{
+									float: right;
+									}
+									.cz a {
+									display: block;
+									color: black;
+									text-align: center;
+									padding: 20px 20px;
+									text-decoration: none;
+									}
+									.cz a:hover {
+									background-color: #f95757d1;
+									}
+									</style>
+									<li class="cz"><a href="/bookmall/chongzhi/"><p style="auto;font-size:15px;color:#5d5d5daa;">充值></p></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="gr_xx-box">
+						<div style="width:650px; height:20px;float:right;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								性别
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{{sex}}
+							</p>
+						</div>
+						<div style="width:650px;height:20px;float:right;margin-top:10px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								年龄
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{{age}}
+							</p>
+						</div>
+						<div style="width:650px;height:20px;float:right;margin-top:10px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								现居
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{{xianju}}
+							</p>
+						</div>
+						<div style="width:650px;height:20px;float:right;margin-top:10px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								生日
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{{year}}-{{month}}-{{data}}
+							</p>
+						</div>
+						<div style="width:650px;height:20px;float:right;margin-top:10px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								星座
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								处女
+							</p>
+						</div>
+							<div style="width:650px;height:20px;float:right;margin-top:10px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">
+								邮箱
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{{email}}
+							</p>
+						</div>
+						<div style="width:650px;height:20px;float:right;margin-top:20px;">
+							<p style="float:left;font-size:20px;color:#5d5d5daa;">个人简介</p>
+						</div>
+						<div style="width:650px;height:10px;float:right;margin-top:10px;"></div>
+						<div style="width:650px;height:100px;float:right;margin-top:10px;">
+							<textarea class="gr_jianjie" placeholder="一句话介绍自己">{{jianjie}}</textarea>
+						</div>
+						<div style="width:300px;height:50px;float:right;margin-top:10px;">
+							<div style="width:200px;height:50px;background:white;float:left;">
+							<a href="/bookmall/xiugai_geren_xinxi/">
+								<button class="button-fenlei">修改信息</button>
+							</a>
+							</div>
+						</div>
+
+				</div>
+			</div>
+			</div>
+			<div id="wd_zp" style="display: none">
+				<div style="width:1200px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+					<center>
+						我的作品
+						<div class="book-box">
+							<ul style="list-style-type: none">
+								{%for wode_zp in wode_zp_list%}
+								<li class="items_list2">
+									<a href="/bookmall/book_xiangxi/?ID={{wode_zp.id}}&UID={{request.session.id}}" style="text-decoration:none; color:black;">
+										<img src="/media/{{wode_zp.bookimg}}" class="book_img" height="180px">
+										<p class="bookname">{{wode_zp.bookname}}</p>
+										<p class="zuozhe">作者：{{wode_zp.author}}</p>
+										<p style="font-size:15px;color:#5d5d5daa;">{{wode_zp.time}}</p>
+									</a>
+									<a href="/bookmall/xiugai_zuopin/?ID={{wode_zp.id}}">
+										<button class="button-fenlei">修改</button>
+									</a>
+
+								</li>
+								{%endfor%}
+							</ul>
+						</div>
+					</center>
+				</div>
+			</div>
+			<div id="wd_sc" style="display: none">
+				<div style="width:1200px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+					我的收藏
+					<div style="width:1100px;height:30px;margin-top:30px;"></div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for wode_sc_book in wode_sc_book_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+								<img src="/media/{{wode_sc_book.bookimg}}">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									{{wode_sc_book.bookname}}
+								</div>
+								<a href="/bookmall/book_xiangxi/?ID={{wode_sc_book.id}}&UID={{request.session.id}}">查看详情</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+					</div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for wode_sc_time in wode_sc_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									<p style="font-size:15px;color:#5d5d5daa;">{{wode_sc_time.clt_time}}</p>
+								</div>
+								<a href="/bookmall/collect_delete/?ID={{wode_sc_time.id}}">取消收藏</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+
+					</div>
+					<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+				</div>
+			</div>
+			<div id="ls_jl" style="display: none">
+				<div style="width:1200px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+					历史记录
+					<div style="width:1100px;height:30px;margin-top:30px;"></div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for ll_book in ll_book_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+								<img src="/media/{{ll_book.bookimg}}">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									{{ll_book.bookname}}
+								</div>
+								<a href="/bookmall/book_xiangxi/?ID={{ll_book.id}}&UID={{request.session.id}}">查看详情</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+					</div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for ll_time in liulan_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									<p style="font-size:15px;color:#5d5d5daa;">{{ll_time.ll_time}}</p>
+								</div>
+								<a href="/bookmall/liulan_delete/?ID={{ll_time.id}}">删除记录</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+
+					</div>
+
+					<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+				</div>
+			</div>
+			<div id="wd_pl" style="display: none">
+				<div style="width:1200px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+					我的帖子
+					<div style="width:1100px;height:30px;margin-top:30px;"></div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for wode_tiezi in wode_tiezi_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+								<textarea style="width:500px;height:100px;resize:none;font-size: 20px;font-family:kaiti;">
+									{{wode_tiezi.diary_text}}
+								</textarea>
+
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+								</div>
+								<a href="/bookmall/xiugai_tiezi/?ID={{wode_tiezi.id}}">修改帖子</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+					</div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for wode_tiezi in wode_tiezi_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									<p style="font-size:15px;color:#5d5d5daa;">{{wode_tiezi.diary_time}}</p>
+								</div>
+								<a href="/bookmall/tiezi_delete/?ID={{wode_tiezi.id}}">删除帖子</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+
+					</div>
+
+					<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+				</div>
+			</div>
+			<div id="gm_ls" style="display: none">
+				<div style="width:1200px;height:1000px;background:white;border-radius:50px;margin-top:30px;">
+					购买历史
+					<div style="width:1100px;height:30px;margin-top:30px;"></div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for gm_ls_book in gm_ls_book_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+								<img src="/media/{{gm_ls_book.bookimg}}">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									{{gm_ls_book.bookname}}
+								</div>
+								<a href="/bookmall/book_xiangxi/?ID={{gm_ls_book.id}}&UID={{request.session.id}}">查看详情</a>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+					</div>
+					<div style="width:600px;background:white;margin-top:10px;float:left;">
+						{%for gomai_ls in gomai_ls_list%}
+						<div class="article-hover">
+							<div class="thumbnail">
+							</div>
+							<div class="info-content" onmouseover="light(this)" onmouseout="normal(this)">
+								<div class="li-title">
+									<p style="font-size:15px;color:#5d5d5daa;">{{gomai_ls.gm_time}}</p>
+								</div>
+							</div>
+						</div>
+						<hr/>
+						{%endfor%}
+
+					</div>
+					<div style="width:1000px;height:30px;margin-left:30px;margin-top:30px;"></div>
+				</div>
+			</div>
+		</center>
+	</div>
+
+
+	{% if messages %}
+	<script>
+	{% for msg in messages %}
+	alert('{{ msg.message }}');
+	{% endfor %}
+	</script>
+	{% endif %}
+</div>
+
+
+
+
+<script src="/static/js/daohang.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/mantianfeihua.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<style>
+ body {
+   background:url("/static/桃花4.gif")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改书籍</title>
+</head>
+<body>
+
+<p style="text-align:center">修改书籍</p>
+    </h1>
+    <center>
+        <p style="text-align:center">当前书籍</p>
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <p style="text-align:center">书名：<input type="text" name="bookname1" value="{{n}}" /></p>
+
+        <p>请输入修改项:</p>
+
+
+
+
+        {% csrf_token %}
+        <p style="text-align:center">书名：<input type="text" name="bookname" /></p>
+        <p style="text-align:center">价格：<input type="text" name="price"/> </p>
+        <p style="text-align:center">作者：<input type="text" name="authors"/></p>
+
+        <p style="text-align:center">分类：<br>
+            仙侠:<input type="radio" name="kind" value="仙侠"/><br>
+            武侠:<input type="radio" name="kind" value="武侠"/><br>
+            言情:<input type="radio" name="kind" value="言情"/><br>
+            玄幻:<input type="radio" name="kind" value="玄幻"/><br>
+            恐怖:<input type="radio" name="kind" value="恐怖"/>
+        </p>
+
+        <p style="text-align:center">封面图片：<input type="file" name="img"> </p>
+        <p style="text-align:center">实体数据：<input type="file" name="data"/> </p>
+        <p style="text-align:center"> <input type="submit" value="修改" />
+
+          <p style="color: #ff0000;text-align: center">{{error_name}}</p>
+    </form>
+    </center>
+
+
+
+
+
+</body>
+</html>

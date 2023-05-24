@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>预测结果</title>
+	<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+	<style>
+		body{background: linear-gradient(to bottom right,black,#d6d6d6);}   <!--渐变,由左上到右下，黑色渐变到#d6d6d6（白色）-->
+		#example2{
+		    width: 1305px;
+		    max-height: 900px;
+		    margin: 0 auto;
+		    background: black;
+		    overflow: auto;
+			}
+		#Header1{
+		    height:100px;
+		    background: linear-gradient(to bottom right,black,#d6d6d6);
+			}
+		#Header2{
+		    height:100px;
+		    width: 1190px;
+		    float: left;
+			}
+		#Header3{
+		    font-size: 55px;
+		    font-style: italic;
+		    line-height: 40px;
+		    color: #ffffff;
+			h1{text-align:center;}
+			}
+		#Content{
+		    height:600px;
+		    margin-top:20px;
+		    background: linear-gradient(to bottom right,white,black);
+			}
+		ul {
+		    list-style-type: none;     <!--list-style-type 属性设置列表项标记的类型。-->
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;     <!--超出部分隐藏//scroll：超出部分滚动-->>
+		    background-color: #303030;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover {
+		    background-color: #2e300c;
+		}
+		li a.active {
+		    background-color: #4CAF50;
+		    color: white;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="Header1">
+		        <div id="Header2">
+		            <h1 id="Header3">欢迎使用芜湖市GDP预测系统</h1>
+		        </div>
+		    </div>
+			<ul>
+				<li><a href="{% url 'shuoye' %}" target="_self">主页</a></li>
+				<!--:active向活动的链接添加特殊的样式。当你点击一个链接时它变成活动链接。-->
+				<li><a href="{% url 'shuju' %}" target="_self">数据</a></li>
+				<li><a class="active" href="{% url 'yuce' %}" target="_self">预测</a></li>
+				<li><a href="{% url 'guanyu' %}" target="_self">关于</a></li>
+			</ul>
+		    <div id="Content">
+                <h3>说明</h3>
+                <p>截距</p>
+                <p>'a': -1124.6799192288943</p>
+                <p>相关系数:</p>
+                <p>'b': [-25.803705391232086, -2.1239289873707503, 0.0482003389696429, 12.381679541018785]</p>
+                <p>模型:</p>
+                <p>GDP = -25.803705391232086*liangshi -2.1239289873707503*caizheng + 0.0482003389696429*gongzi + 12.381679541018785*renko</p>
+        </div>
+    </body>
+</html>

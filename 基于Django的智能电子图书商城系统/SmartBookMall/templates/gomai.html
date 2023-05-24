@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+<center>
+    <p class="tx_dd">订单详情</p>
+    <div class="ding_dan_list">
+        <div class="left-box">
+            <div class="book-img">
+                <img src="/media/{{ gomai.book_img }}" class="bookimg">
+            </div>
+        </div>
+
+        <div class="book-name">
+            <p class="bookname">{{ gomai.book_name }}</p>
+        </div>
+        <div class="book-author">
+            <p class="bookauthor">作者：{{ gomai.book_author }}</p>
+        </div>
+        <div class="book-price">
+            <p class="bookprice">{{ gomai.book_price }}币</p>
+        </div>
+        <div class="book-fabu">
+            <p class="bookfabu">发布人：{{ gomai.fabu_ren }}</p>
+        </div>
+        <div class="book-gomai">
+            <p class="bookgomai">购买人：{{ gomai.gomai_ren }}</p>
+        </div>
+        <div class="active-box">
+            <a href="/bookmall/gomai_qd/?book_id={{gomai.book_id}}&gomai_id={{gomai.gomai_ren_id}}&fabu_id={{gomai.fabu_ren_id}}">
+            <button class="button-qd">确定并支付</button>
+            </a>
+
+            <a href="/bookmall/book_xiangxi/?ID={{gomai.book_id}}&UID={{request.session.id}}">
+            <button class="button-qx">取消并退出</button>
+            </a>
+        </div>
+    </div>
+</center>
+{% if messages %}
+<script>
+{% for msg in messages %}
+alert('{{ msg.message }}');
+{% endfor %}
+</script>
+{% endif %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/gomai.css">
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<style>
+ body {
+   background:url("/static/烟雨.gif")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="/static/reset.css" />
+  <link rel="stylesheet" href="/static/main.css" />
+  <script type="text/javascript" src="/static/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="/static/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/jquery.mousewheel.js"></script>
+  <title>聊天机器人</title>
+</head>
+
+<body>
+
+
+
+  <div class="wrap">
+    <!-- 头部 Header 区域 -->
+    <div class="header">
+      <center>
+      <h3>小骨</h3>
+      <img src="/static/touxiang1.jpg" width="80" alt="icon" />
+      </center>
+    </div>
+    <!-- 中间 聊天内容区域 -->
+    <div class="main">
+      <ul class="talk_list" style="top: 0px;">
+        <!-- <li class="left_word">
+          <img src="img/person01.png" />
+          <span>你好</span>
+        </li> -->
+        <!-- <li class="right_word">
+					<img src="img/person02.png" />
+					<span>你好哦</span>
+				</li> -->
+      </ul>
+
+      <!-- 右侧滚动条 -->
+      <div class="drag_bar" style="display: none;">
+        <div class="drager ui-draggable ui-draggable-handle" style="display: none; height: 412.628px;"></div>
+      </div>
+    </div>
+    <!-- 底部 消息编辑区域 -->
+    <div class="footer">
+      <img src="/static/touxiang2.jpg" width="80" alt="icon" />
+      <input type="text" placeholder="说的什么吧..." class="input_txt" />
+      <input type="button" value="发 送" class="input_sub" />
+    </div>
+  </div>
+  <audio src="" autoplay></audio>
+
+  <!-- 只有插入axios.js文件才可以使用ajax的库 -->
+  <script src="/static/axios.js"></script>
+  <!-- 为了重置滚动条位置 -->
+  <script src="/static/scroll.js"></script>
+  <script>
+    let arr = [] //用于存放机器人和用户的语言msg
+    //非空判断
+    document.querySelector('.input_sub').onclick = function () {
+      let txt = document.querySelector('.input_txt').value
+      if (txt.trim() == '') {
+        return alert('输入内容不能为空')
+      }
+      arr.push({
+        msg: txt, //语言
+        isMe: true //用于鉴别是谁的话，根据角色不同，渲染的位置不同
+      })
+      console.log(arr)
+      renderData(arr)
+      resetui()
+
+      //获取机器人的语言
+      axios({
+        url: 'http://www.liulongbin.top:3006/api/robot',
+        method: 'get',
+        params: {
+          spoken: txt
+        }
+      }).then(res => {
+        //成功回调
+        arr.push({
+          msg: res.data.data.info.text,
+          isMe: false
+        })
+        renderData(arr)
+        renderVedio(res.data.data.info.text)
+        resetui() //重置滚动条位置
+
+      })
+      document.querySelector('.input_txt').value = ''
+    }
+    //渲染页面
+    const renderData = arr => {
+      document.querySelector('.talk_list').innerHTML = arr.map(item => {
+        if (item.isMe) {
+          return ` <li class="right_word">
+					<img src="/static/touxiang2.jpg" width="80" />
+					<span>${item.msg}</span>
+				</li>`
+        } else {
+          return ` <li class="left_word">
+					<img src="/static/touxiang1.jpg" width="80"/>
+					<span>${item.msg}</span>
+				</li>`
+        }
+      }).join('')
+    }
+    //语音播报
+    const renderVedio = text => {
+      axios({
+        url: 'http://www.liulongbin.top:3006/api/synthesize',
+        method: 'get',
+        params: {
+          text
+        }
+      }).then(res => {
+        //成功回调
+        console.log(res)
+        document.querySelector('audio').src = res.data.voiceUrl
+      })
+    }
+  </script>
+
+
+
+
+
+</body>
+
+</html>
+

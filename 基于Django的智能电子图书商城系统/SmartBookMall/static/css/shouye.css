@@ -1,0 +1,478 @@
+.top
+{
+width:100%;
+background-image:url(/media/project_img/gucheng.jpg);
+background-size: cover;
+}
+
+.top_nav
+{
+width:100vw;
+height:30px;
+background: rgba(0,0,0,0.8);
+}
+
+.ziti1{
+font-family:楷体;
+font-size:30px;
+Color:rgb(253, 249, 247);
+
+}
+
+
+
+
+
+
+.container {
+  background: #efefef;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav {
+  background: #fff;
+  border-radius: 50px;
+  padding: 10px;
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+}
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 13px 35px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.5s;
+}
+nav ul li::after {
+  content: '';
+  background: #f44566;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  transition: top 0.5s,opacity 0.5s;
+}
+nav ul li:hover{
+  color: #fff;
+}
+nav ul li:hover::after{
+  top: 50%;
+  opacity: 1;
+}
+
+nav ul li a{
+  padding: 20px 16px;
+}
+
+
+
+.sou_suo_box{
+background: #efefef;
+width: 100%;
+height: 15vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+}
+
+
+
+
+div.search {
+padding: 10px 0;
+}
+
+form {
+position: relative;
+width: 400px;
+margin: 0 auto;  /*设置宽度后，居中*/
+}
+
+input,button {
+border: none;   /*无边框样式；元素的总宽度和高度包括边框的宽度 */
+outline: none;  /*无轮廓样式；轮廓是在元素周围绘制的一条线，在边框之外并且可能与其他内容重叠，以凸显元素，元素的总宽度和高度不受轮廓线宽度的影响。*/
+}
+
+.search input {
+width: 80%;
+height: 42px;
+padding-left: 13px;
+border: 2px solid #c5464a;
+border-radius: 19px 0 0 19px;   /*border-radius 属性用于向元素添加圆角边框：*/
+background: transparent;  /*背景透明*/
+float:left;
+
+}
+
+.search button {
+height: 47.56px;
+width: 42px;
+cursor: pointer;  /*cursor属性定义了鼠标指针放在一个元素边界范围内时所用的光标形状*/
+position: absolute;
+background: #c5464a;
+border-radius: 0 19px 19px 0;
+width: 60px;
+float:left;
+
+}
+.search button:hover {
+background-color: #c7585c;  /*点击搜索按钮时的背景颜色*/
+}
+
+        /* 在<button>元素后面插入内容，并设置所插入内容的样式： */
+.search button:before {
+content: "搜索";  /*插入的内容*/
+font-size: 13px;  /*插入内容的字体大小*/
+color: #F9F0DA;  /*插入内容的字体颜色*/
+}
+
+
+
+
+
+
+
+
+
+.book-box{
+width:70%;
+background-size: cover;
+
+}
+
+
+.items{
+width:250px;
+height:330px;
+background-color: white;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+.book_img{
+width:180px;
+
+margin-top:20px;
+margin-bottom:8px;
+
+}
+
+.bookname{
+width:214px;
+height:20px;
+line-height:21px
+margin:0 auto;
+font-size:20px;
+font-family:楷体;
+margin-bottom:2px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.zuozhe{
+width:214px;
+height:18px;
+line-height:18px
+margin-bottom:10px;
+font-size:17px;
+font-family:楷体;
+color:  #0eb0f0;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+
+.price{
+font-family:楷体;
+color: #ff6700;
+font-size:18px;
+
+}
+
+
+
+.button-fenlei{
+width: 100px;/*设置按钮宽度*/
+height: 35px;/*设置按钮高度*/
+color:white;/*字体颜色*/
+
+
+
+margin-top:10px;
+margin-left:10px;
+
+
+background-color:rgba(234, 45, 45, 0.363);/*按钮背景颜色*/
+border-radius: 10px;/*让按钮变得圆滑一点*/
+border-width: 0;/*消去按钮丑的边框*/
+outline: none;/*取消轮廓*/
+font-family: KaiTi;/*字体设置为楷体*/
+font-size: 20px;/*设置字体大小*/
+text-align: center;/*字体居中*/
+cursor: pointer;/*设置鼠标箭头手势*/
+}
+.button-fenlei:hover{/*鼠标移动时的颜色变化*/
+background-color: rgb(255, 8, 8);
+}
+
+
+
+.gr_zh_box{
+width:1000px;
+height:800px;
+background:white;
+border-radius:50px;
+margin-top:30px;
+}
+
+.tx-box-xx{
+width:800px;
+height:150px;
+background:white;
+}
+
+.tou_xiang-box{
+width:100px;
+height:100px;
+background:pink;
+border-radius:50px;
+float:left;
+}
+
+.tx_img{
+width:100px;
+height:100px;
+border-radius:50px;
+}
+
+
+.wd-name-box{
+width:600px;
+height:100px;
+background:pink;
+float:left;
+}
+
+.gr_xx-box{
+width:800px;
+height:400px;
+
+}
+
+.gr_jianjie{
+width:500px;
+height:100px;
+resize:none;
+font-size: 20px;
+font-family: "楷体";
+float:left;
+}
+
+
+
+.shouye{
+	display: block;
+	background: #efefef;
+}
+.shucheng{
+	display: none;
+	background: #efefef;
+}
+.shequ{
+	display: none;
+	background: #efefef;
+}
+.shujia{
+	display: none;
+	background: #efefef;
+}
+.wode{
+	display: none;
+	background: #efefef;
+}
+hr {
+	opacity: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.page-1{
+	display: block;
+}
+.page-2{
+	display: none;
+}
+.page-3{
+	display: none;
+}
+hr {
+	opacity: 50%;
+}
+
+
+.items2{
+width:200px;
+height:330px;
+background-color: pink;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+.book_img2{
+width:180px;
+margin-top:20px;
+margin-bottom:8px;
+
+}
+
+.bookname2{
+width:214px;
+height:20px;
+line-height:21px
+margin:0 auto;
+font-size:20px;
+font-family:楷体;
+margin-bottom:2px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.zuozhe2{
+width:214px;
+height:18px;
+line-height:18px
+margin-bottom:10px;
+font-size:17px;
+font-family:楷体;
+color:  #0eb0f0;
+
+margin:0 auto;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.items_list{
+width:200px;
+height:330px;
+background-color: pink;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+.items_list2{
+width:250px;
+height:380px;
+background-color: pink;
+float:left;
+margin-bottom:15px;
+margin-left:15px;
+margin-top:20px;
+
+}
+
+.article-hover{
+	height: 150px;
+	background: #ffffff;
+}
+.article-hover:hover{
+	background: #f8f8f8;
+}
+.thumbnail {
+	width: 250px;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	float: left;
+}
+.thumbnail img {
+	width: 200px;
+	height: 130px;
+	margin: 0 auto;
+}
+.info-content {
+	width: 200px;
+	height: 150px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.info-content a {
+	color: #000000;
+	text-decoration: none;
+	display: inline-block;
+	border: 1px solid #cdcdcd;
+	padding:4px 10px 5px;
+	border-radius: 10px;
+}
+.info-content a:hover {
+	background: linear-gradient(to right,#ff000d65,#ff40008b);
+	color: #fff;
+}
+.li-title{
+	width: 200px;
+	font-size: 24px;
+	font-weight: 700;
+	text-align: left;
+}
+.li-content{
+	width: 200px;
+	font-size: 16px;
+	font-weight: 400;
+	text-align: left;
+}
+
+.jianjie {
+border-radius:10px;
+height:800px;
+width:1000px;
+resize:none;
+font-size: 20px;
+font-family: "楷体";
+}

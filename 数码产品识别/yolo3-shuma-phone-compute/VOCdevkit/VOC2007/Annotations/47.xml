@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>47.jpg</filename>
+	<path>C:\Users\32703\Desktop\VOCdevkit\VOC2007\JPEGImages\47.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>961</width>
+		<height>1281</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>computer</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>61</xmin>
+			<ymin>36</ymin>
+			<xmax>961</xmax>
+			<ymax>1224</ymax>
+		</bndbox>
+	</object>
+</annotation>

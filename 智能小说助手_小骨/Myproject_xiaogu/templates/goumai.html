@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<style>
+ body {
+   background:url("/static/桃花5.gif")  no-repeat center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#CCCCCC;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+ }
+</style>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购买书籍</title>
+</head>
+<body>
+
+
+<p style="text-align:center">购买书籍</p>
+    <center>
+
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p style="text-align:center">书名：<input type="text" name="bookname" value="{{book.bookname}}" /></p>
+        <p style="text-align:center">作者：<input type="text" name="authors" value="{{book.authors}}" /></p>
+
+        <p style="text-align:center">
+            分类:<input type="text" name="kind" value="{{book.kind}}"/>
+        </p>
+
+        <p style="text-align:center">封面图片：<input type="text" name="img" value="{{book.img}}" > </p>
+        <p style="text-align:center">实体数据：<input type="text" name="data" value="{{book.data}}" /> </p>
+
+        <p style="text-align:center">请输入你的用户名：</p>
+        <p style="text-align:center"><input type="text" name="user"/> </p>
+        <p style="text-align:center"> <input type="submit" value="确认购买" />
+
+          <p style="color: #ff0000;text-align: center">{{error_name}}</p>
+    </form>
+    </center>
+
+
+
+
+
+</body>
+</html>

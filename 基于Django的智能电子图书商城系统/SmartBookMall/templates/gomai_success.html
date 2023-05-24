@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购买成功</title>
+</head>
+<body style="background-color: rgba(187, 186, 186, 0.223);">
+<center>
+    <div class="gm-su-box">
+        <div class="left-box">
+            <div class="book-img">
+                <img src="/media/{{ gm_su_2.book_img }}" class="bookimg">
+            </div>
+        </div>
+
+        <div class="book-name">
+            <p class="bookname">{{ gm_su_2.book_name }}</p>
+        </div>
+        <div class="book-author">
+            <p class="bookauthor">作者：{{ gm_su_2.book_author }}</p>
+        </div>
+
+        <div class="ac-box">
+            <a href="/bookmall/reade_book/?ID={{gm_su_2.book_id}}&UID={{request.session.id}}">
+                <button class="button-qx">立即阅读</button>
+            </a>
+            <a href="/bookmall/reade_book/">
+                <button class="button-qx">返回首页</button>
+            </a>
+        </div>
+    </div>
+</center>
+
+{% if messages %}
+<script>
+{% for msg in messages %}
+alert('{{ msg.message }}');
+{% endfor %}
+</script>
+{% endif %}
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/gomai_success.css">
+</body>
+</html>

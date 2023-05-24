@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>数据</title>
+		<style>
+		body{background: linear-gradient(to bottom right,black,#d6d6d6);}   <!--渐变,由左上到右下，黑色渐变到#d6d6d6（白色）-->
+		#example2{
+		    width: 1305px;
+		    max-height: 900px;
+		    margin: 0 auto;
+		    background: black;
+		    overflow: auto;
+			}
+		#Header1{
+		    height:100px;
+		    background: linear-gradient(to bottom right,black,#d6d6d6);
+			}
+		#Header2{
+		    height:100px;
+		    width: 1190px;
+		    float: left;
+			}
+		#Header3{
+		    font-size: 55px;
+		    font-style: italic;
+		    line-height: 40px;
+		    color: #ffffff;
+			h1{text-align:center;}
+			}
+		#Content{
+		    height:600px;
+		    margin-top:20px;
+		    background: linear-gradient(to bottom right,white,black);
+			}
+		ul {
+		    list-style-type: none;     <!--list-style-type 属性设置列表项标记的类型。-->
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;     <!--超出部分隐藏//scroll：超出部分滚动-->>
+		    background-color: #303030;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover {
+		    background-color: #2e300c;
+		}
+		li a.active {
+		    background-color: #4CAF50;
+		    color: white;
+		}
+
+		</style>
+
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+	</head>
+	<body>
+		<div id="Header1">
+		        <div id="Header2">
+		            <h1 id="Header3">欢迎使用芜湖市GDP预测系统</h1>
+		        </div>
+		</div>
+			<ul>
+				<li><a href="{% url 'shuoye' %}" target="_self">主页</a></li>
+				<!--:active向活动的链接添加特殊的样式。当你点击一个链接时它变成活动链接。-->
+				<li><a class="active" href="{% url 'shuju' %}" target="_self">数据</a></li>
+				<li><a href="{% url 'yuce' %}" target="_self">预测</a></li>
+				<li><a href="{% url 'guanyu' %}" target="_self">关于</a></li>
+			</ul>
+        <div id="Content">
+            <a href="{% url 'shuju1' %}" target="_self">变量权重</a>
+			<a href="{% url 'shuju2' %}" target="_self">原始数据特征</a>
+			<a href="{% url 'shuju3' %}" target="_self">训练数据特征</a>
+			<a href="{% url 'shuju4' %}" target="_self">测试数据特征</a>
+			<a href="{% url 'shuju5' %}" target="_self">原始数据标签</a>
+			<a href="{% url 'shuju6' %}" target="_self">训练数据标签</a>
+			<a href="{% url 'shuju7' %}" target="_self">测试数据标签</a>
+			<a href="{% url 'shuju8' %}" target="_self">粮食</a>
+			<a href="{% url 'shuju9' %}" target="_self">财政</a>
+			<a href="{% url 'shuju10' %}" target="_self">工资</a>
+			<a href="{% url 'shuju11' %}" target="_self">人口</a>
+			<a href="{% url 'shuju12' %}" target="_self">GDP</a>
+		 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 800px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '测试数据特征'
+            },
+            tooltip: {},
+            legend: {
+                data:['测试数据特征']
+            },
+            xAxis: {
+                data: [0,1]
+            },
+            yAxis: {},
+            series: [{
+                name: '测试数据特征',
+                type: 'bar',
+                data: {{dict_return.cstz|safe}}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+        </div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>172.16.11.51</title>
+		<style>
+		#example1{
+			width: 100%;
+			height:1000px;
+			background-image: url({% static 'photo/tu1.png' %});
+			background-size: 100% 100%;
+			border: aqua 0px solid;
+		}
+		h1 {text-align:center;}
+		.footer{
+			text-align: center;
+			color: aqua;
+			font: normal 12px/20px "microsoft yahei";
+			margin: 15px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="example1">
+			<h1>欢迎使用芜湖市GDP预测系统</h1>
+		    <hr style="margin-bottom: 100px;">
+			<div style="border: 0px red solid;width: 400px;height: 350px; float: right;padding-right: 200px;">
+				<span> <img src="https://s.aigei.com/src/img/png/53/53538796f00a4672a44e213b19db6410.png?imageMogr2/auto-orient/thumbnail/!237x237r/gravity/Center/crop/237x237/quality/85/&e=1735488000&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:AlAP8cpMd1_Q4FTW3QA1vEc04Mg=" style="width: 40px; height: 40px;"><input type="text" name="txtName" placeholder="请输入您的账号" style="width: 300px; height: 40px;"/> </span>
+				<br/>
+				<span> <img src="https://s.aigei.com/src/img/png/34/3447e47e6ac74e61b79486013ae08f96.png?imageMogr2/auto-orient/thumbnail/!237x237r/gravity/Center/crop/237x237/quality/85/&e=1735488000&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:t86SRsI5PQYrfTJ6148uD02GfHY=" style="width: 40px; height: 40px;"><input type="password" name="txtPwd" placeholder="请输入您的密码" style="width: 300px; height: 40px;"/> </span>
+				<br/>
+				<div style="padding-top: 35px;padding-left: 40px;">
+				<!--	<input type="button" name="" id="log_submit" value="登录" onclick="location.href='首页.html'"/>
+					<input id="log_submit" type="button" value="注册" onclick="location.href='注册.html'"/>
+				     -->
+					<form action="{% url 'dldo' %}" method="post">
+						<input type="submit" name="resetInfo" value="登陆" onclick="location.href='templates/注册.html首页.html'" style="width: 150px; height: 45px;"/>
+					</form>
+					<form action="{% url 'zc' %}" method="post">
+						<input type="submit" value="注册" onclick="location.href='templates/注册.html'" style="width: 150px; height: 45px;"/>
+					</form>
+				</div>
+				<a href="注册.html忘记密码？.html" target="_blank" style="float: right;">忘记密码？</a>
+			</div>
+		</div><hr/>
+		<div id="footerID" class="footer">
+			版权所有© Copyright 1999-2021  正方软件股份有限公司　　中国·杭州西湖区紫霞街176号 互联网创新创业园2号301
+		</div>
+	</body>
+</html>
